@@ -39,12 +39,13 @@
             title="User Details"
         /></a>
         |
-        <img
-          width="20"
-          height="20"
-          src="assets/pencil-icon.png"
-          title="Edit User"
-        />
+        <a routerLink="/user/edit/{{ user.id }}">
+          <img
+            width="20"
+            height="20"
+            src="assets/pencil-icon.png"
+            title="Edit User"
+        /></a>
       </td>
     </tr>
   </tbody>

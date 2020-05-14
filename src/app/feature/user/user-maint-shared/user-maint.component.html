@@ -1,6 +1,7 @@
 <span class="component-title">[{{ title }}]</span>
-<p *ngIf="!actor">Loading...</p>
-<div *ngIf="actor">
+<span> | <a routerLink="user/list">Return to List</a></span>
+<p *ngIf="!user">Loading...</p>
+<div *ngIf="user">
   <main class="single">
     <table class="table table-sm">
       <tr>
@@ -8,7 +9,7 @@
           First Name:
         </td>
         <td>
-          <input [(ngModel)]="actor.firstName" class="rounded" type="text" />
+          <input [(ngModel)]="user.firstName" class="rounded" type="text" />
         </td>
       </tr>
       <tr>
@@ -16,23 +17,55 @@
           Last Name:
         </td>
         <td>
-          <input [(ngModel)]="actor.lastName" class="rounded" type="text" />
+          <input [(ngModel)]="user.lastName" class="rounded" type="text" />
         </td>
       </tr>
       <tr>
         <td>
-          Gender:
+          User Name:
         </td>
         <td>
-          <input [(ngModel)]="actor.gender" class="rounded" type="text" />
+          <input [(ngModel)]="user.userName" class="rounded" type="text" />
         </td>
       </tr>
       <tr>
         <td>
-          Birth Date (YYYY-MM-DD):
+          Password:
         </td>
         <td>
-          <input [(ngModel)]="actor.birthDate" class="rounded" type="text" />
+          <input [(ngModel)]="user.password" class="rounded" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Phone Number:
+        </td>
+        <td>
+          <input [(ngModel)]="user.phoneNumber" class="rounded" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Email:
+        </td>
+        <td>
+          <input [(ngModel)]="user.email" class="rounded" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Reviewer status:
+        </td>
+        <td>
+          <input [(ngModel)]="user.reviewer" class="rounded" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Admin status:
+        </td>
+        <td>
+          <input [(ngModel)]="user.admin" class="rounded" type="text" />
         </td>
       </tr>
     </table>
