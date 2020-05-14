@@ -31,12 +31,13 @@
       <td>{{ user.reviewer }}</td>
       <td>{{ user.admin }}</td>
       <td>
-        <img
-          width="20"
-          height="20"
-          src="assets/details.png"
-          title="User Details"
-        />
+        <a routerLink="/user/detail/{{ user.id }}">
+          <img
+            width="20"
+            height="20"
+            src="assets/details.png"
+            title="User Details"
+        /></a>
         |
         <img
           width="20"
