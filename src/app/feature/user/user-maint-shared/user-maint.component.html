@@ -5,9 +5,7 @@
   <main class="single">
     <table class="table table-sm">
       <tr>
-        <td>
-          First Name:
-        </td>
+        <td>First Name:</td>
         <td>
           <input [(ngModel)]="user.firstName" class="rounded" type="text" />
         </td>
@@ -61,26 +59,27 @@
         <td>
           Reviewer status:
         </td>
-        <label class="switch">
+        <!-- <ejs-switch #wswitch [(ngModel)]="user.reviewer"> </ejs-switch> -->
+        <!-- <label class="switch">
           <input type="checkbox" />
           <span class="slider round"></span>
-        </label>
+        </label> -->
         <!-- <mat-slider min="1" max="100" step="1" value="1"></mat-slider> -->
-        <!-- <td>
+        <td>
           <input [(ngModel)]="user.reviewer" class="rounded" type="text" />
-        </td> -->
+        </td>
       </tr>
       <tr>
         <td>
           Admin status:
         </td>
-        <label class="switch">
+        <!-- <label class="switch">
           <input type="checkbox" />
           <span class="slider round"></span>
-        </label>
-        <!-- <td>
+        </label> -->
+        <td>
           <input [(ngModel)]="user.admin" class="rounded" type="text" />
-        </td> -->
+        </td>
       </tr>
     </table>
   </main>
@@ -89,7 +88,6 @@
       {{ submitBtnTitle }}
     </button></span
   >
-
   <!-- <span
     ><button (click)="backClicked()" class="btn btn-sm btn-primary">
       Back

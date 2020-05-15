@@ -1,27 +1,28 @@
-<div *ngIf="user" class="component">
+<div *ngIf="vendor" class="component">
   <section class="heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
-    <span> | <a routerLink="/user/list">Return to List</a></span>
+    <span> | <a routerLink="/vendor/list">Return to List</a></span>
   </section>
   <main class="single">
     <table class="table table-sm">
       <thead>
         <tr>
           <td>
-            <b>Information for User:</b> {{ user.lastName }},
-            {{ user.firstName }}
+            <b>Information for Vendor:</b> {{ vendor.name }} -[{{
+              vendor.phoneNumber
+            }}]
           </td>
         </tr>
       </thead>
       <tr>
         <td>ID</td>
-        <td>{{ user.id }}</td>
+        <td>{{ vendor.id }}</td>
       </tr>
       <tr>
-        <td>User Name</td>
+        <td>Vendor Name</td>
         <td>
           <input
-            [(ngModel)]="user.userName"
+            [(ngModel)]="vendor.name"
             class="rounded"
             type="text"
             disabled
@@ -29,10 +30,10 @@
         </td>
       </tr>
       <tr>
-        <td>Password</td>
+        <td>Address</td>
         <td>
           <input
-            [(ngModel)]="user.password"
+            [(ngModel)]="vendor.address"
             class="rounded"
             type="text"
             disabled
@@ -40,10 +41,10 @@
         </td>
       </tr>
       <tr>
-        <td>First Name</td>
+        <td>City</td>
         <td>
           <input
-            [(ngModel)]="user.firstName"
+            [(ngModel)]="vendor.city"
             class="rounded"
             type="text"
             disabled
@@ -51,10 +52,21 @@
         </td>
       </tr>
       <tr>
-        <td>Last Name</td>
+        <td>State</td>
         <td>
           <input
-            [(ngModel)]="user.lastName"
+            [(ngModel)]="vendor.state"
+            class="rounded"
+            type="text"
+            disabled
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Zip Code</td>
+        <td>
+          <input
+            [(ngModel)]="vendor.zipCode"
             class="rounded"
             type="text"
             disabled
@@ -65,7 +77,7 @@
         <td>Phone Number</td>
         <td>
           <input
-            [(ngModel)]="user.phoneNumber"
+            [(ngModel)]="vendor.phoneNumber"
             class="rounded"
             type="text"
             disabled
@@ -76,29 +88,7 @@
         <td>Email</td>
         <td>
           <input
-            [(ngModel)]="user.email"
-            class="rounded"
-            type="text"
-            disabled
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Reviewer</td>
-        <td>
-          <input
-            [(ngModel)]="user.reviewer"
-            class="rounded"
-            type="text"
-            disabled
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Admin</td>
-        <td>
-          <input
-            [(ngModel)]="user.admin"
+            [(ngModel)]="vendor.email"
             class="rounded"
             type="text"
             disabled
@@ -109,7 +99,9 @@
   </main>
   <span>
     <span
-      ><a routerLink="/user/edit{{ user.id }}" class="btn btn-sm btn-warning"
+      ><a
+        routerLink="/vendor/edit{{ vendor.id }}"
+        class="btn btn-sm btn-warning"
         >Edit</a
       ></span
     >
