@@ -4,13 +4,14 @@ import { VendorService } from 'src/app/service/vendor.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-vendor-detail',
-  templateUrl: './vendor-detail.component.html',
-  styleUrls: ['./vendor-detail.component.css'],
+  selector: 'app-vendor-edit',
+  templateUrl: '../vendor-maint-shared/vendor-maint.component.html',
+  styleUrls: ['./vendor-edit.component.css'],
 })
-export class VendorDetailComponent implements OnInit {
+export class VendorEditComponent implements OnInit {
+  title: string = 'Vendor Edit';
+  submitBtnTitle: string = 'Update';
   vendor: Vendor = new Vendor();
-  title: string = 'Vendor Detail';
   vendorId: number = 0;
 
   constructor(
@@ -27,16 +28,13 @@ export class VendorDetailComponent implements OnInit {
     });
   }
 
-  delete() {
-    this.vendorSvc.delete(this.vendorId).subscribe((jr) => {
+  save() {
+    this.vendorSvc.edit(this.vendor).subscribe((jr) => {
       if (jr.errors == null) {
-        console.log(jr.data as string);
         this.router.navigateByUrl('/vendor/list');
       } else {
-        console.log('***Error deleting Vendor***', this.vendorId, jr.errors);
+        console.log('***Error updating new Vendor***', this.vendor, jr.errors);
       }
     });
   }
-
-  backClicked() {}
 }

@@ -1,27 +1,15 @@
-<div *ngIf="user" class="component">
+<div *ngIf="product" class="component">
   <section class="heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
-    <span> | <a routerLink="/user/list">Return to List</a></span>
+    <span> | <a routerLink="/priduct/list">Return to List</a></span>
   </section>
   <main class="single">
     <table class="table table-sm">
-      <thead>
-        <tr>
-          <td>
-            <b>Information for User: </b> {{ user.lastName }},
-            {{ user.firstName }}
-          </td>
-        </tr>
-      </thead>
       <tr>
         <td>ID:</td>
-        <td>{{ user.id }}</td>
-      </tr>
-      <tr>
-        <td>User Name:</td>
         <td>
           <input
-            [(ngModel)]="user.userName"
+            [(ngModel)]="product.id"
             class="rounded"
             type="text"
             READONLY
@@ -29,10 +17,10 @@
         </td>
       </tr>
       <tr>
-        <td>Password:</td>
+        <td>Vendor:</td>
         <td>
           <input
-            [(ngModel)]="user.password"
+            [(ngModel)]="product.vendor.name"
             class="rounded"
             type="text"
             READONLY
@@ -40,10 +28,10 @@
         </td>
       </tr>
       <tr>
-        <td>First Name:</td>
+        <td>Part Number:</td>
         <td>
           <input
-            [(ngModel)]="user.firstName"
+            [(ngModel)]="product.partNumber"
             class="rounded"
             type="text"
             READONLY
@@ -51,10 +39,10 @@
         </td>
       </tr>
       <tr>
-        <td>Last Name:</td>
+        <td>Product Name:</td>
         <td>
           <input
-            [(ngModel)]="user.lastName"
+            [(ngModel)]="product.name"
             class="rounded"
             type="text"
             READONLY
@@ -62,10 +50,10 @@
         </td>
       </tr>
       <tr>
-        <td>Phone Number:</td>
+        <td>Price:</td>
         <td>
           <input
-            [(ngModel)]="user.phoneNumber"
+            [(ngModel)]="product.price"
             class="rounded"
             type="text"
             READONLY
@@ -73,10 +61,10 @@
         </td>
       </tr>
       <tr>
-        <td>Email:</td>
+        <td>Unit:</td>
         <td>
           <input
-            [(ngModel)]="user.email"
+            [(ngModel)]="product.unit"
             class="rounded"
             type="text"
             READONLY
@@ -84,21 +72,10 @@
         </td>
       </tr>
       <tr>
-        <td>Reviewer Status:</td>
+        <td>Photo Path:</td>
         <td>
           <input
-            [(ngModel)]="user.reviewer"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Admin Status:</td>
-        <td>
-          <input
-            [(ngModel)]="user.admin"
+            [(ngModel)]="product.photoPath"
             class="rounded"
             type="text"
             READONLY
@@ -109,7 +86,9 @@
   </main>
   <span>
     <span
-      ><a routerLink="/user/edit/{{ user.id }}" class="btn btn-sm btn-warning"
+      ><a
+        routerLink="/product/edit/{{ product.id }}"
+        class="btn btn-sm btn-warning"
         >Edit</a
       ></span
     >

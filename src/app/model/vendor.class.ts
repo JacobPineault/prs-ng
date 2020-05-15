@@ -5,7 +5,7 @@ export class Vendor {
   address: string;
   city: string;
   state: string;
-  zipCode: number;
+  zipCode: string;
   phoneNumber: string;
   email: string;
 
@@ -16,7 +16,7 @@ export class Vendor {
     address: string = '',
     city: string = '',
     state: string = '',
-    zipCode: number = 0,
+    zipCode: string = '',
     phoneNumber: string = '',
     email: string = ''
   ) {

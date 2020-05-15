@@ -10,7 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 })
 export class UserEditComponent implements OnInit {
   title: string = 'User-Edit';
-  submitBtnTitle: string = 'Edit';
+  submitBtnTitle: string = 'Update';
   user: User = new User();
   userId: number = 0;
 
@@ -23,6 +23,7 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((parms) => (this.userId = parms['id']));
     this.userSvc.get(this.userId).subscribe((jr) => {
+      this.user = jr.data as User;
       console.log('User found!', this.user);
     });
   }

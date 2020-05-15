@@ -13,9 +13,14 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.menuItems = [
+      new MenuItem('Home', '', 'Home'),
       new MenuItem('User', '/user/list', 'User List'),
       new MenuItem('Vendor', '/vendor/list', 'Vendor List'),
-      // new MenuItem('Request', '/request/list', 'Request List'),
+      new MenuItem('Product', '/product/list', 'Product List'),
+      new MenuItem('Request', '/request/list', 'Request List'),
+      new MenuItem('Review', '', 'Review'),
+      new MenuItem('Login', '', 'User Login'),
+      new MenuItem('About', '/', 'About'),
     ];
   }
 }
