@@ -12,10 +12,12 @@ import { ProductListComponent } from './feature/product/product-list/product-lis
 import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './feature/product/product-create/product-create.component';
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
+import { HomePageComponent } from './feature/home-page/home-page.component';
+import { AboutMiscComponent } from './feature/about-misc/about-misc.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: UserListComponent },
+  { path: 'home', component: HomePageComponent },
   { path: 'user/list', component: UserListComponent },
   { path: 'user/detail/:id', component: UserDetailComponent },
   { path: 'user/create', component: UserCreateComponent },
@@ -28,7 +30,8 @@ const routes: Routes = [
   { path: 'product/detail/:id', component: ProductDetailComponent },
   { path: 'product/create', component: ProductCreateComponent },
   { path: 'product/edit/:id', component: ProductEditComponent },
-  { path: '**', component: UserListComponent },
+  { path: 'about/misc', component: AboutMiscComponent },
+  { path: '**', component: HomePageComponent },
 ];
 
 @NgModule({
