@@ -1,5 +1,5 @@
 <span class="component-title">[{{ title }}]</span>
-<span> | <a routerLink="user/list">Return to List</a></span>
+<span> | <a routerLink="user/list">Return to User List</a></span>
 <p *ngIf="!user">Loading...</p>
 <div *ngIf="user">
   <main class="single">
@@ -41,7 +41,12 @@
           Phone Number:
         </td>
         <td>
-          <input [(ngModel)]="user.phoneNumber" class="rounded" type="text" />
+          <input
+            [(ngModel)]="user.phoneNumber"
+            class="rounded"
+            type="text"
+            placeholder="XXX-XXX-XXXX"
+          />
         </td>
       </tr>
       <tr>
@@ -56,17 +61,26 @@
         <td>
           Reviewer status:
         </td>
-        <td>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+        <!-- <mat-slider min="1" max="100" step="1" value="1"></mat-slider> -->
+        <!-- <td>
           <input [(ngModel)]="user.reviewer" class="rounded" type="text" />
-        </td>
+        </td> -->
       </tr>
       <tr>
         <td>
           Admin status:
         </td>
-        <td>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+        <!-- <td>
           <input [(ngModel)]="user.admin" class="rounded" type="text" />
-        </td>
+        </td> -->
       </tr>
     </table>
   </main>
@@ -75,7 +89,7 @@
       {{ submitBtnTitle }}
     </button></span
   >
-  |
+
   <!-- <span
     ><button (click)="backClicked()" class="btn btn-sm btn-primary">
       Back

@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { MatSliderModule } from '@angular/material/slider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +15,22 @@ import { UserCreateComponent } from './feature/user/user-create/user-create.comp
 import { UserEditComponent } from './feature/user/user-edit/user-edit.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, UserListComponent, UserDetailComponent, UserCreateComponent, UserEditComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    UserListComponent,
+    UserDetailComponent,
+    UserCreateComponent,
+    UserEditComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
