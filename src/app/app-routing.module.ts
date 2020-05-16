@@ -14,10 +14,12 @@ import { ProductCreateComponent } from './feature/product/product-create/product
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
 import { HomePageComponent } from './feature/home-page/home-page.component';
 import { AboutMiscComponent } from './feature/about-misc/about-misc.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
+  { path: 'user/login', component: UserLoginComponent },
   { path: 'user/list', component: UserListComponent },
   { path: 'user/detail/:id', component: UserDetailComponent },
   { path: 'user/create', component: UserCreateComponent },

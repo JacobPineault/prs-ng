@@ -24,6 +24,7 @@ import { ProductCreateComponent } from './feature/product/product-create/product
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
 import { HomePageComponent } from './feature/home-page/home-page.component';
 import { AboutMiscComponent } from './feature/about-misc/about-misc.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AboutMiscComponent } from './feature/about-misc/about-misc.component';
     ProductEditComponent,
     HomePageComponent,
     AboutMiscComponent,
+    UserLoginComponent,
   ],
   imports: [
     BrowserModule,

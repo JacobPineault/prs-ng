@@ -1,5 +1,4 @@
 import { User } from './user.class';
-import { stat } from 'fs';
 
 export class Request {
   id: number;
