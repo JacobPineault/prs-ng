@@ -1,15 +1,16 @@
-<div *ngIf="product" class="component">
+<div *ngIf="request" class="component">
   <section class="heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
-    <span> | <a routerLink="/product/list">Return to List</a></span>
+    <span> | <a routerLink="/request/list">Return to List</a></span>
   </section>
   <main class="single">
     <table class="table table-sm">
+      <!-- this value should be assigned by the current logged in user -->
       <tr>
-        <td>ID:</td>
+        <td>User ID:</td>
         <td>
           <input
-            [(ngModel)]="product.id"
+            [(ngModel)]="request.user.id"
             class="rounded"
             type="text"
             READONLY
@@ -17,69 +18,48 @@
         </td>
       </tr>
       <tr>
-        <td>Vendor:</td>
+        <td>Description:</td>
         <td>
           <input
-            [(ngModel)]="product.vendor.name"
+            [(ngModel)]="request.description"
             class="rounded"
             type="text"
-            READONLY
           />
         </td>
       </tr>
       <tr>
-        <td>Part Number:</td>
+        <td>Justification:</td>
         <td>
           <input
-            [(ngModel)]="product.partNumber"
+            [(ngModel)]="request.justification"
             class="rounded"
             type="text"
-            READONLY
           />
         </td>
       </tr>
       <tr>
-        <td>Product Name:</td>
+        <td>Date Needed:</td>
         <td>
+          <!-- drop down calender -->
+          <input [(ngModel)]="request.dateNeeded" class="rounded" type="text" />
+        </td>
+      </tr>
+      <tr>
+        <td>Delivery Mode:</td>
+        <td>
+          <!-- possible drop down. delivery, pick up, etc... -->
           <input
-            [(ngModel)]="product.name"
+            [(ngModel)]="request.deliveryMode"
             class="rounded"
             type="text"
-            READONLY
           />
         </td>
       </tr>
       <tr>
-        <td>Price:</td>
+        <!-- this should be calculated per each lineitem -->
+        <td>Total:</td>
         <td>
-          <input
-            [(ngModel)]="product.price"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Unit:</td>
-        <td>
-          <input
-            [(ngModel)]="product.unit"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Photo Path:</td>
-        <td>
-          <input
-            [(ngModel)]="product.photoPath"
-            class="rounded"
-            type="text"
-            READONLY
-          />
+          <input [(ngModel)]="request.status" class="rounded" type="text" />
         </td>
       </tr>
     </table>
@@ -87,16 +67,16 @@
   <span>
     <span
       ><a
-        routerLink="/product/edit/{{ product.id }}"
+        routerLink="/request/edit/{{ request.id }}"
         class="btn btn-sm btn-warning"
         >Edit</a
       ></span
     >
-    <span>
+    <!-- <span>
       <b> | </b>
       <button (click)="delete()" class="btn btn-sm btn-danger">
         Delete
       </button></span
-    >
+    >-->
   </span>
 </div>

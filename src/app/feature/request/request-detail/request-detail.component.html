@@ -1,7 +1,7 @@
-<div *ngIf="product" class="component">
+<div *ngIf="request" class="component">
   <section class="heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
-    <span> | <a routerLink="/product/list">Return to List</a></span>
+    <span> | <a routerLink="/request/list">Return to List</a></span>
   </section>
   <main class="single">
     <table class="table table-sm">
@@ -9,7 +9,7 @@
         <td>ID:</td>
         <td>
           <input
-            [(ngModel)]="product.id"
+            [(ngModel)]="request.id"
             class="rounded"
             type="text"
             READONLY
@@ -17,10 +17,10 @@
         </td>
       </tr>
       <tr>
-        <td>Vendor:</td>
+        <td>User:</td>
         <td>
           <input
-            [(ngModel)]="product.vendor.name"
+            [(ngModel)]="request.user.lastName"
             class="rounded"
             type="text"
             READONLY
@@ -28,10 +28,10 @@
         </td>
       </tr>
       <tr>
-        <td>Part Number:</td>
+        <td>Description:</td>
         <td>
           <input
-            [(ngModel)]="product.partNumber"
+            [(ngModel)]="request.description"
             class="rounded"
             type="text"
             READONLY
@@ -39,10 +39,10 @@
         </td>
       </tr>
       <tr>
-        <td>Product Name:</td>
+        <td>Justification:</td>
         <td>
           <input
-            [(ngModel)]="product.name"
+            [(ngModel)]="request.justification"
             class="rounded"
             type="text"
             READONLY
@@ -50,10 +50,10 @@
         </td>
       </tr>
       <tr>
-        <td>Price:</td>
+        <td>Date Needed:</td>
         <td>
           <input
-            [(ngModel)]="product.price"
+            [(ngModel)]="request.dateNeeded"
             class="rounded"
             type="text"
             READONLY
@@ -61,10 +61,10 @@
         </td>
       </tr>
       <tr>
-        <td>Unit:</td>
+        <td>Delivery Mode:</td>
         <td>
           <input
-            [(ngModel)]="product.unit"
+            [(ngModel)]="request.deliveryMode"
             class="rounded"
             type="text"
             READONLY
@@ -72,10 +72,10 @@
         </td>
       </tr>
       <tr>
-        <td>Photo Path:</td>
+        <td>Status:</td>
         <td>
           <input
-            [(ngModel)]="product.photoPath"
+            [(ngModel)]="request.status"
             class="rounded"
             type="text"
             READONLY
@@ -87,7 +87,7 @@
   <span>
     <span
       ><a
-        routerLink="/product/edit/{{ product.id }}"
+        routerLink="/request/edit/{{ request.id }}"
         class="btn btn-sm btn-warning"
         >Edit</a
       ></span
