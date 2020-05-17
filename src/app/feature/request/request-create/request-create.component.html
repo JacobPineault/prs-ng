@@ -5,16 +5,12 @@
   </section>
   <main class="single">
     <table class="table table-sm">
-      <!-- this value should be assigned by the current logged in user -->
+      <!-- this value should be assigned by the current logged in user
+      do not display this field -->
       <tr>
         <td>User ID:</td>
         <td>
-          <input
-            [(ngModel)]="request.user.id"
-            class="rounded"
-            type="text"
-            READONLY
-          />
+          <input [(ngModel)]="request.user.id" class="rounded" type="text" />
         </td>
       </tr>
       <tr>
@@ -47,36 +43,21 @@
       <tr>
         <td>Delivery Mode:</td>
         <td>
-          <!-- possible drop down. delivery, pick up, etc... -->
-          <input
-            [(ngModel)]="request.deliveryMode"
-            class="rounded"
-            type="text"
-          />
-        </td>
-      </tr>
-      <tr>
-        <!-- this should be calculated per each lineitem -->
-        <td>Total:</td>
-        <td>
-          <input [(ngModel)]="request.status" class="rounded" type="text" />
+          <select>
+            <option value="none" disabled selected="selected">
+              Select an Option</option
+            >
+            <option value="Delivery">Delivery</option>
+            <option value="Pick-up">Pick-up</option>
+          </select>
         </td>
       </tr>
     </table>
   </main>
-  <span>
-    <span
-      ><a
-        routerLink="/request/edit/{{ request.id }}"
-        class="btn btn-sm btn-warning"
-        >Edit</a
-      ></span
-    >
-    <!-- <span>
-      <b> | </b>
-      <button (click)="delete()" class="btn btn-sm btn-danger">
-        Delete
-      </button></span
-    >-->
+  <span
+    ><button (click)="save()" class="btn btn-sm btn-primary">
+      <!-- {{ submitBtnTitle }} -->
+      Create Request
+    </button>
   </span>
 </div>

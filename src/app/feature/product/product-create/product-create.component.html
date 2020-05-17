@@ -38,7 +38,12 @@
       <tr>
         <td>Price:</td>
         <td>
-          <input [(ngModel)]="product.price" class="rounded" type="number" />
+          <input
+            [(ngModel)]="product.price"
+            class="rounded"
+            min="0"
+            type="number"
+          />
         </td>
       </tr>
       <tr>

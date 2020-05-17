@@ -40,4 +40,6 @@ export class LineItemCreateComponent implements OnInit {
   compProduct(a: Product, b: Product): boolean {
     return a && b && a.id === b.id;
   }
+
+  save() {}
 }

@@ -11,10 +11,10 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./request-create.component.css'],
 })
 export class RequestCreateComponent implements OnInit {
-  title: string = 'Request Create';
+  title: string = 'Create Request';
   request: Request = new Request();
   user: User = null;
-  submitBtnTitle: string = 'Create';
+  submitBtnTitle: string = 'Create Request';
 
   constructor(
     private requestSvc: RequestService,
@@ -27,7 +27,7 @@ export class RequestCreateComponent implements OnInit {
   save() {
     this.requestSvc.create(this.request).subscribe((jr) => {
       if (jr.errors == null) {
-        this.router.navigateByUrl('/request/list');
+        this.router.navigateByUrl('/request/lines');
       } else {
         console.log(
           '***Error creating new Request***',
