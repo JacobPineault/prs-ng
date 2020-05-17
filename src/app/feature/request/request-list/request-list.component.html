@@ -14,13 +14,14 @@
       <th>ID</th>
       <th>User Name</th>
       <th>Description</th>
-      <th>Justification</th>
+      <!-- <th>Justification</th> -->
       <th>Date Needed</th>
-      <th>Delivery Mode</th>
+      <!-- <th>Delivery Mode</th> -->
       <th>Status</th>
       <th>Total</th>
       <th>Submitted Date</th>
-      <th>Reason For Rejection</th>
+      <th>Action</th>
+      <!-- <th>Reason For Rejection</th> -->
     </tr>
   </thead>
   <tbody>
@@ -28,13 +29,13 @@
       <td>{{ request.id }}</td>
       <td>{{ request.user.lastName + ", " + request.user.firstName }}</td>
       <td>{{ request.description }}</td>
-      <td>{{ request.justification }}</td>
+      <!-- <td>{{ request.justification }}</td> -->
       <td>{{ request.dateNeeded }}</td>
-      <td>{{ request.deliveryMode }}</td>
+      <!-- <td>{{ request.deliveryMode }}</td> -->
       <td>{{ request.status }}</td>
       <td>${{ request.total }}</td>
       <td>{{ request.submittedDate }}</td>
-      <td>{{ request.reasonForRejection }}</td>
+      <!-- <td>{{ request.reasonForRejection }}</td> -->
       <td>
         <a routerLink="/request/detail/{{ request.id }}">
           <img
@@ -43,12 +44,18 @@
             src="assets/details.png"
             title="Request Details"
         /></a>
-        <b> | </b>
         <a routerLink="/request/edit/{{ request.id }}">
           <img
             width="20"
             height="20"
             src="assets/pencil-icon.png"
+            title="Edit Request"
+        /></a>
+        <a routerLink="/request/lines/{{ request.id }}">
+          <img
+            width="20"
+            height="20"
+            src="assets/lines.png"
             title="Edit Request"
         /></a>
       </td>

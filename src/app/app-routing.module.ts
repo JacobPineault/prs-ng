@@ -16,6 +16,7 @@ import { HomePageComponent } from './feature/home-page/home-page.component';
 import { AboutMiscComponent } from './feature/about-misc/about-misc.component';
 import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 import { RequestListComponent } from './feature/request/request-list/request-list.component';
+import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 import { RequestCreateComponent } from './feature/request/request-create/request-create.component';
 import { RequestDetailComponent } from './feature/request/request-detail/request-detail.component';
 import { RequestEditComponent } from './feature/request/request-edit/request-edit.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'product/create', component: ProductCreateComponent },
   { path: 'product/edit/:id', component: ProductEditComponent },
   { path: 'request/list', component: RequestListComponent },
+  { path: 'request/lines', component: RequestLinesComponent },
   { path: 'request/create', component: RequestCreateComponent },
   { path: 'request/detail/:id', component: RequestDetailComponent },
   { path: 'request/edit/:id', component: RequestEditComponent },

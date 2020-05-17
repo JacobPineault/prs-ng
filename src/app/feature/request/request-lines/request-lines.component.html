@@ -1,0 +1,42 @@
+<div *ngIf="request" class="component">
+  <section class="heading">
+    <span class="page-title front weight-bold font-italic">{{ title }}</span>
+    <span> | <a routerLink="/request/lineitems">Return to List</a></span>
+  </section>
+  <main class="single">
+    <table class="table table-sm">
+      <tr>
+        <td>ID:</td>
+        <td>{{ request.user.id }}</td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td>{{ request.description }}</td>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <td>{{ request.status }}</td>
+      </tr>
+      <tr>
+        <td>Total:</td>
+        <td>
+          <input [(ngModel)]="request.total" class="rounded" type="text" />
+        </td>
+      </tr>
+    </table>
+    <span class="page-title front weight-bold font-italic">[{{ title }}]</span>
+    <a routerLink="/lineitem/create"
+      ><img
+        width="20"
+        height="20"
+        src="assets/add-icon.png"
+        title="Add New Item"
+    /></a>
+  </main>
+  <span>
+    // this should only display if there is 1> line items
+    <button (click)="save()" class="btn btn-sm btn-danger">
+      Submit for review
+    </button></span
+  >
+</div>
