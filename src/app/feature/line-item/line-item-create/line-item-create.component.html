@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div *ngIf="lineItem" class="component">
   <section class="heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
@@ -9,7 +10,7 @@
         <td>Product:</td>
         <td>
           <select
-            [(ngModel)]="products"
+            [(ngModel)]="lineItem.product"
             class="rounded"
             type="text"
             [compareWith]="compProduct"
@@ -18,7 +19,8 @@
               Select an Option
             </option>
             <option *ngFor="let product of products" [ngValue]="product"
-              >{{ product.name }} | {{ product.vendor.name }}</option
+              >${{ product.price }} - {{ product.name }} |
+              {{ product.vendor.name }}</option
             ></select
           >
         </td>
@@ -29,6 +31,7 @@
           <input
             [(ngModel)]="lineItem.quantity"
             class="rounded"
+            min="0"
             type="number"
           />
         </td>
@@ -36,6 +39,6 @@
     </table>
   </main>
   <span>
-    <span> <a (click)="save()" class="btn btn-sm btn-warning">Add</a></span>
+    <span> <a (click)="add()" class="btn btn-sm btn-warning">Add Item</a></span>
   </span>
 </div>
