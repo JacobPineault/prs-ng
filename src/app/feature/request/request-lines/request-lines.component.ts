@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Request } from 'src/app/model/request.class';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LineItem } from 'src/app/model/line-item.class';
+import { RequestService } from 'src/app/service/request.service';
+import { LineItemService } from 'src/app/service/line-item.service';
 
 @Component({
   selector: 'app-request-lines',
@@ -10,10 +13,21 @@ import { Router } from '@angular/router';
 export class RequestLinesComponent implements OnInit {
   title: string = 'Request-Lines';
   request: Request = new Request();
+  lineItems: LineItem[] = [];
+  lineItem: LineItem = new LineItem();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private requestSvc: RequestService,
+    private liSvc: LineItemService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this;
+    });
+  }
 
   save() {}
 }

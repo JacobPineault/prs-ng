@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <section class="heading">
   <span class="page-title front weight-bold font-italic">[{{ title }}]</span>
   <a routerLink="/vendor/create"
@@ -11,28 +12,24 @@
 <table *ngIf="vendors" class="table table-sm table-striped">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Code</th>
       <th>Name</th>
+      <th>Phone Number</th>
       <th>Address</th>
       <th>City</th>
       <th>State</th>
       <th>Zip Code</th>
-      <th>Phone Number</th>
       <th>Email</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let vendor of vendors">
-      <td>{{ vendor.id }}</td>
-      <td>{{ vendor.code }}</td>
       <td>{{ vendor.name }}</td>
+      <td>{{ vendor.phoneNumber }}</td>
       <td>{{ vendor.address }}</td>
       <td>{{ vendor.city }}</td>
       <td>{{ vendor.state }}</td>
       <td>{{ vendor.zipCode }}</td>
-      <td>{{ vendor.phoneNumber }}</td>
       <td>{{ vendor.email }}</td>
       <td>
         <a routerLink="/vendor/detail/{{ vendor.id }}">

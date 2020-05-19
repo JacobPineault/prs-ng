@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <section class="heading">
   <span class="page-title front weight-bold font-italic">[{{ title }}]</span>
   <a routerLink="/request/create"
@@ -11,31 +12,23 @@
 <table *ngIf="requests" class="table table-sm table-striped">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>User Name</th>
+      <th>Submitted Date</th>
+      <th>User</th>
       <th>Description</th>
-      <!-- <th>Justification</th> -->
       <th>Date Needed</th>
-      <!-- <th>Delivery Mode</th> -->
       <th>Status</th>
       <th>Total</th>
-      <th>Submitted Date</th>
       <th>Action</th>
-      <!-- <th>Reason For Rejection</th> -->
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="requests">
     <tr *ngFor="let request of requests">
-      <td>{{ request.id }}</td>
-      <td>{{ request.user.lastName + ", " + request.user.firstName }}</td>
+      <td>{{ request.submittedDate }}</td>
+      <td>{{ request.user.firstName }}{{ request.user.lastName }}</td>
       <td>{{ request.description }}</td>
-      <!-- <td>{{ request.justification }}</td> -->
       <td>{{ request.dateNeeded }}</td>
-      <!-- <td>{{ request.deliveryMode }}</td> -->
       <td>{{ request.status }}</td>
       <td>${{ request.total }}</td>
-      <td>{{ request.submittedDate }}</td>
-      <!-- <td>{{ request.reasonForRejection }}</td> -->
       <td>
         <a routerLink="/request/detail/{{ request.id }}">
           <img
@@ -56,7 +49,7 @@
             width="20"
             height="20"
             src="assets/lines.png"
-            title="Edit Request"
+            title="Request Lines"
         /></a>
       </td>
     </tr>

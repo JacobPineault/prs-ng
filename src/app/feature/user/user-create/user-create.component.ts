@@ -26,6 +26,4 @@ export class UserCreateComponent implements OnInit {
       }
     });
   }
-
-  backClicked() {}
 }

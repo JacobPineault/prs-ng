@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <span class="component-title">[{{ title }}]</span>
 <span> | <a routerLink="/vendor/list">Return to Vendor List</a></span>
 <p *ngIf="!vendor">Loading...</p>
@@ -54,6 +55,7 @@
         <td>
           State:
         </td>
+        <!--Maybe drop down menu for states? -->
         <td>
           <input [(ngModel)]="vendor.state" class="rounded" type="text" />
         </td>
@@ -68,14 +70,9 @@
       </tr>
     </table>
   </main>
-  <span
-    ><button (click)="save()" class="btn btn-sm btn-primary">
+  <span>
+    <button (click)="save()" class="btn btn-sm btn-primary">
       {{ submitBtnTitle }}
-    </button></span
-  >
-  <!-- <span
-    ><button (click)="backClicked()" class="btn btn-sm btn-primary">
-      Back
-    </button></span
-  > -->
+    </button>
+  </span>
 </div>

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomePageComponent } from './feature/home-page/home-page.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 import { UserListComponent } from './feature/user/user-list/user-list.component';
 import { UserDetailComponent } from './feature/user/user-detail/user-detail.component';
 import { UserCreateComponent } from './feature/user/user-create/user-create.component';
@@ -12,36 +14,48 @@ import { ProductListComponent } from './feature/product/product-list/product-lis
 import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
 import { ProductCreateComponent } from './feature/product/product-create/product-create.component';
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
-import { HomePageComponent } from './feature/home-page/home-page.component';
-import { AboutMiscComponent } from './feature/about-misc/about-misc.component';
-import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 import { RequestListComponent } from './feature/request/request-list/request-list.component';
 import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 import { RequestCreateComponent } from './feature/request/request-create/request-create.component';
 import { RequestDetailComponent } from './feature/request/request-detail/request-detail.component';
 import { RequestEditComponent } from './feature/request/request-edit/request-edit.component';
+import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
+import { RequestApproveComponent } from './feature/request/request-approve/request-approve.component';
+import { LineItemCreateComponent } from './feature/line-item/line-item-create/line-item-create.component';
+import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
+import { AboutMiscComponent } from './feature/about-misc/about-misc.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
+  // space
   { path: 'user/login', component: UserLoginComponent },
   { path: 'user/list', component: UserListComponent },
   { path: 'user/detail/:id', component: UserDetailComponent },
   { path: 'user/create', component: UserCreateComponent },
   { path: 'user/edit/:id', component: UserEditComponent },
+  // space
   { path: 'vendor/list', component: VendorListComponent },
   { path: 'vendor/detail/:id', component: VendorDetailComponent },
   { path: 'vendor/create', component: VendorCreateComponent },
   { path: 'vendor/edit/:id', component: VendorEditComponent },
+  // space
   { path: 'product/list', component: ProductListComponent },
   { path: 'product/detail/:id', component: ProductDetailComponent },
   { path: 'product/create', component: ProductCreateComponent },
   { path: 'product/edit/:id', component: ProductEditComponent },
+  // space
+  { path: 'lineitem/create', component: LineItemCreateComponent },
+  { path: 'lineitem/edit', component: LineItemEditComponent },
+  // space
   { path: 'request/list', component: RequestListComponent },
-  { path: 'request/lines', component: RequestLinesComponent },
-  { path: 'request/create', component: RequestCreateComponent },
   { path: 'request/detail/:id', component: RequestDetailComponent },
+  { path: 'request/create', component: RequestCreateComponent },
   { path: 'request/edit/:id', component: RequestEditComponent },
+  { path: 'request/lines/:id', component: RequestLinesComponent },
+  { path: 'request/review/:id', component: RequestReviewComponent },
+  { path: 'request/approve/:id', component: RequestApproveComponent },
+  // space
   { path: 'about/misc', component: AboutMiscComponent },
   { path: '**', component: HomePageComponent },
 ];

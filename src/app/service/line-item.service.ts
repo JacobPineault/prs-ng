@@ -12,8 +12,10 @@ const url: string = 'http://localhost:8080/lineitems/';
 export class LineItemService {
   constructor(private http: HttpClient) {}
 
-  list(): Observable<JsonResponse> {
-    return this.http.get(url) as Observable<JsonResponse>;
+  list(requestId: number): Observable<JsonResponse> {
+    return this.http.get(url + '/lines-for-pr/' + requestId) as Observable<
+      JsonResponse
+    >;
   }
 
   get(id: number): Observable<JsonResponse> {

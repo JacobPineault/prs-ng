@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div *ngIf="vendor" class="component">
   <section class="Heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
@@ -105,18 +106,20 @@
     </table>
   </main>
   <span>
-    <span
-      ><a
-        routerLink="/vendor/edit/{{ vendor.id }}"
-        class="btn btn-sm btn-warning"
-        >Edit</a
-      ></span
-    >
-    <span>
-      <b> | </b>
-      <button (click)="delete()" class="btn btn-sm btn-danger">
-        Delete
-      </button></span
-    >
+    <span *ngIf="loggedInUser && loggedInUser.admin == true">
+      <span
+        ><a
+          routerLink="/vendor/edit/{{ vendor.id }}"
+          class="btn btn-sm btn-warning"
+          >Edit</a
+        ></span
+      >
+      <span>
+        <b> | </b>
+        <button (click)="delete()" class="btn btn-sm btn-danger">
+          Delete
+        </button></span
+      >
+    </span>
   </span>
 </div>

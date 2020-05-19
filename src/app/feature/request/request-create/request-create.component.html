@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div *ngIf="request" class="component">
   <section class="heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
@@ -5,14 +6,6 @@
   </section>
   <main class="single">
     <table class="table table-sm">
-      <!-- this value should be assigned by the current logged in user
-      do not display this field -->
-      <tr>
-        <td>User ID:</td>
-        <td>
-          <input [(ngModel)]="request.user.id" class="rounded" type="text" />
-        </td>
-      </tr>
       <tr>
         <td>Description:</td>
         <td>
@@ -36,8 +29,7 @@
       <tr>
         <td>Date Needed:</td>
         <td>
-          <!-- drop down calender -->
-          <input [(ngModel)]="request.dateNeeded" class="rounded" type="text" />
+          <input [(ngModel)]="request.dateNeeded" class="rounded" type="date" />
         </td>
       </tr>
       <tr>
@@ -48,7 +40,7 @@
               Select an Option</option
             >
             <option value="Delivery">Delivery</option>
-            <option value="Pick-up">Pick-up</option>
+            <option value="In Store Pick-up">In Store Pick-up</option>
           </select>
         </td>
       </tr>
@@ -56,8 +48,7 @@
   </main>
   <span
     ><button (click)="save()" class="btn btn-sm btn-primary">
-      <!-- {{ submitBtnTitle }} -->
-      Create Request
+      {{ submitBtnTitle }}
     </button>
   </span>
 </div>

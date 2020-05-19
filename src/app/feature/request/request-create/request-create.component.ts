@@ -3,7 +3,7 @@ import { RequestService } from 'src/app/service/request.service';
 import { Router } from '@angular/router';
 import { Request } from 'src/app/model/request.class';
 import { User } from 'src/app/model/user.class';
-import { UserService } from 'src/app/service/user.service';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-request-create',
@@ -14,20 +14,25 @@ export class RequestCreateComponent implements OnInit {
   title: string = 'Create Request';
   request: Request = new Request();
   user: User = null;
-  submitBtnTitle: string = 'Create Request';
+  submitBtnTitle: string = 'Request Create';
 
   constructor(
     private requestSvc: RequestService,
-    private userSvc: UserService,
-    private router: Router
+    private router: Router,
+    private sysSvc: SystemService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.sysSvc.checkLogin();
+    this.user = this.sysSvc.loggedInUser;
+  }
 
   save() {
+    this.request.user = this.user;
     this.requestSvc.create(this.request).subscribe((jr) => {
       if (jr.errors == null) {
         this.router.navigateByUrl('/request/lines');
+        console.log(this.request);
       } else {
         console.log(
           '***Error creating new Request***',

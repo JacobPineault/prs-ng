@@ -9,8 +9,8 @@ import { Request } from 'src/app/model/request.class';
   styleUrls: ['./request-detail.component.css'],
 })
 export class RequestDetailComponent implements OnInit {
+  title: string = 'Request-Detail';
   request: Request = new Request();
-  title: string = 'Request Detail';
   requestId: number = 0;
 
   constructor(
