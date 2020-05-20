@@ -39,7 +39,9 @@ export class RequestService {
   }
 
   review(id: number): Observable<JsonResponse> {
-    return this.http.get(url + 'list-review/' + id) as Observable<JsonResponse>;
+    return this.http.get(url + '/list-review/' + id) as Observable<
+      JsonResponse
+    >;
   }
 
   approve(request: Request): Observable<JsonResponse> {

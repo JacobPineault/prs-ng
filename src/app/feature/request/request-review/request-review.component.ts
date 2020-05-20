@@ -14,6 +14,7 @@ export class RequestReviewComponent implements OnInit {
   requests: Request[] = [];
   user: User = null;
   userId: number = 0;
+  loggedInUser: User = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,10 +24,11 @@ export class RequestReviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.sysSvc.checkLogin();
-    this.route.params.subscribe(
-      (parms) => (this.loggedInUser.id = parms['id'])
-    );
-    this.requestSvc.review(this.userId).subscribe((jr) => {
+    this.user = this.sysSvc.loggedInUser;
+    // this.route.params.subscribe(
+    //   (parms) => (this.loggedInUser.id = parms['id'])
+    // );
+    this.requestSvc.review(this.user.id).subscribe((jr) => {
       this.requests = jr.data as Request[];
       console.log(this.requests);
     });

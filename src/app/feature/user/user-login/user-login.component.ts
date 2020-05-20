@@ -21,8 +21,8 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit(): void {
     // testing purposes
-    this.user.userName = 'jakepino';
-    this.user.password = 'admin';
+    this.user.userName = 'mfreeman';
+    this.user.password = 'pwd';
     // keep
     this.sysSvc.loggedInUser = null;
   }
@@ -31,8 +31,8 @@ export class UserLoginComponent implements OnInit {
     console.log('login called for user:', this.user);
     this.userSvc.login(this.user).subscribe((jr) => {
       console.log('jr:', jr);
-      if (jr.errors == null) {
-        if (jr.data == null) {
+      if (!jr.errors) {
+        if (!jr.data) {
           // no error, but no user? invalid combo
           this.message = '1Invalid Username/Password combo. Please Retry';
         } else {
