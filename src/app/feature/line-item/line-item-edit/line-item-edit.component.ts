@@ -34,6 +34,8 @@ export class LineItemEditComponent implements OnInit {
     });
   }
 
+  // this.route.params.subscribe(params => this.lineItemId = params['id']);
+
   compProduct(a: Product, b: Product): boolean {
     return a && b && a.id === b.id;
   }

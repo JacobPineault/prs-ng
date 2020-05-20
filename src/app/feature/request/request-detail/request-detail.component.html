@@ -4,6 +4,7 @@
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
     <span> | <a routerLink="/request/list">Return to List</a></span>
   </section>
+  <p *ngIf="!request">Loading</p>
   <section *ngIf="request">
     <table class="table table-sm">
       <thead>
@@ -25,7 +26,7 @@
   <main class="single">
     <table class="table table-sm">
       <tr>
-        <td>ID:</td>
+        <td>Request ID:</td>
         <td>{{ request.id }}</td>
       </tr>
       <tr>
@@ -64,17 +65,17 @@
       </tr>
     </table>
   </main>
-  <span>
-    <span
+  <span *ngIf="request">
+    <span *ngIf="request.status == 'New'"
       ><a
         routerLink="/request/edit/{{ request.id }}"
         class="btn btn-sm btn-warning"
         >Edit</a
-      ></span
-    >
-    <span>
-      <b> | </b>
-      <button (click)="delete()" class="btn btn-sm btn-danger">
+      >
+      |
+    </span>
+    <span
+      ><button (click)="delete()" class="btn btn-sm btn-danger">
         Delete
       </button></span
     >

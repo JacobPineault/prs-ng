@@ -31,7 +31,7 @@ export class RequestCreateComponent implements OnInit {
     this.request.user = this.user;
     this.requestSvc.create(this.request).subscribe((jr) => {
       if (jr.errors == null) {
-        this.router.navigateByUrl('/request/lines');
+        this.router.navigateByUrl('/request/list');
         console.log(this.request);
       } else {
         console.log(

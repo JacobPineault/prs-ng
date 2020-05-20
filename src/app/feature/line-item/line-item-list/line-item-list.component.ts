@@ -11,7 +11,7 @@ import { Request } from 'src/app/model/request.class';
   styleUrls: ['./line-item-list.component.css'],
 })
 export class LineItemListComponent implements OnInit {
-  title: string = 'Purchase Request Line-Items';
+  title: string = 'Request Line-Items';
   title1: string = 'Lines';
   lineItems: LineItem[] = [];
   requestId: number = 0;
@@ -39,7 +39,6 @@ export class LineItemListComponent implements OnInit {
     this.requestSvc.submit(this.request).subscribe((jr) => {
       if (jr.errors == null) {
         this.router.navigateByUrl('/request/list');
-        alert('Request submitted!');
       } else {
         console.log('Error submitting request: ' + jr.errors);
       }

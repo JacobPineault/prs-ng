@@ -30,10 +30,9 @@ export class RequestDetailComponent implements OnInit {
   delete() {
     this.requestSvc.delete(this.requestId).subscribe((jr) => {
       if (jr.errors == null) {
-        console.log(jr.data as string);
         this.router.navigateByUrl('/request/list');
       } else {
-        console.log('***Error deleting Request', this.requestId, jr.errors);
+        console.log('***Error deleting Request***', this.requestId, jr.errors);
       }
     });
   }

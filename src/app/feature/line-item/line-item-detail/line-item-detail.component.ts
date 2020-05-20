@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LineItemDetailComponent implements OnInit {
   lineItem: LineItem = null;
-  lineItemId: number = 0;
+  lineId: number = 0;
 
   constructor(
     private liSvc: LineItemService,
@@ -19,16 +19,16 @@ export class LineItemDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((parms) => (this.lineItemId = parms['id']));
-    this.liSvc.get(this.lineItemId).subscribe((jr) => {
+    this.route.params.subscribe((parms) => (this.lineId = parms['id']));
+    this.liSvc.get(this.lineId).subscribe((jr) => {
       this.lineItem = jr.data as LineItem;
       console.log(this.lineItem);
     });
-    this.liSvc.delete(this.lineItemId).subscribe((jr) => {
+    this.liSvc.delete(this.lineId).subscribe((jr) => {
       if (jr.errors == null) {
         this.router.navigateByUrl('line-item/list/' + this.lineItem.request.id);
       } else {
-        console.log('Error removing product', this.lineItemId, jr.errors);
+        console.log('***Error removing product***', this.lineId, jr.errors);
       }
     });
   }

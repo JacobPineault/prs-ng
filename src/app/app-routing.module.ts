@@ -24,6 +24,8 @@ import { RequestApproveComponent } from './feature/request/request-approve/reque
 import { LineItemCreateComponent } from './feature/line-item/line-item-create/line-item-create.component';
 import { LineItemEditComponent } from './feature/line-item/line-item-edit/line-item-edit.component';
 import { AboutMiscComponent } from './feature/about-misc/about-misc.component';
+import { LineItemListComponent } from './feature/line-item/line-item-list/line-item-list.component';
+import { LineItemDetailComponent } from './feature/line-item/line-item-detail/line-item-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -45,8 +47,10 @@ const routes: Routes = [
   { path: 'product/create', component: ProductCreateComponent },
   { path: 'product/edit/:id', component: ProductEditComponent },
   // space
-  { path: 'lineitem/create', component: LineItemCreateComponent },
-  { path: 'lineitem/edit', component: LineItemEditComponent },
+  { path: 'line-item/list/:id', component: LineItemListComponent },
+  { path: 'line-item/delete/:id', component: LineItemDetailComponent },
+  { path: 'line-item/create/:id', component: LineItemCreateComponent },
+  { path: 'line-item/edit/:id', component: LineItemEditComponent },
   // space
   { path: 'request/list', component: RequestListComponent },
   { path: 'request/detail/:id', component: RequestDetailComponent },

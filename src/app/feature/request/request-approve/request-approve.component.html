@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody *ngIf="!lineItems">
-        <p>No items present. Select the + to add an item.</p>
+        <p>No items found. Add some items.</p>
       </tbody>
       <tbody *ngIf="lineItems">
         <tr *ngFor="let lineItem of lineItems">
@@ -53,13 +53,13 @@
   </main>
   <div *ngIf="request">
     <button (click)="accept()" class="btn btn-sm btn-success">
-      Accept Request
+      Approve Request
     </button>
     <input
       [(ngModel)]="request.reasonForRejection"
       class="rounded"
       type="text"
-      placeholder="Reason for rejection..."
+      placeholder="Reason for rejection?"
     />
     <button
       *ngIf="request.reasonForRejection"

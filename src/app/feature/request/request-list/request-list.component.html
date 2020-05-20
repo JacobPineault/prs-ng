@@ -14,7 +14,7 @@
     <tr>
       <th>Submitted Date</th>
       <th>User</th>
-      <th>Description</th>
+      <th>Delivery Method</th>
       <th>Date Needed</th>
       <th>Status</th>
       <th>Total</th>
@@ -50,6 +50,36 @@
             height="20"
             src="assets/lines.png"
             title="Request Lines"
+        /></a>
+      </td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="myRequests && user && user.admin == false">
+    <tr *ngFor="let myRequest of myRequests">
+      <td *ngIf="myRequest.status != 'New'">{{ myRequest.submittedDate }}</td>
+      <td *ngIf="myRequest.status == 'New'"></td>
+      <td>{{ myRequest.user.firstName }} {{ myRequest.user.lastName }}</td>
+      <td>{{ myRequest.deliveryMode }}</td>
+      <td>{{ myRequest.dateNeeded }}</td>
+      <td>${{ myRequest.total }}</td>
+      <td>{{ myRequest.status }}</td>
+      <td>
+        <a routerLink="/request/detail/{{ myRequest.id }}"
+          ><img src="assets/details.png" width="20" height="20" title="Detail"
+        /></a>
+        <b> | </b>
+        <span *ngIf="myRequest.status == 'New'">
+          <a routerLink="/request/edit/{{ myRequest.id }}"
+            ><img
+              src="assets/pencil-icon.png"
+              width="20"
+              height="20"
+              title="Edit"
+          /></a>
+          <b> | </b>
+        </span>
+        <a routerLink="line-item/list/{{ myRequest.id }}"
+          ><img src="assets/lines.png" width="20" height="20"
         /></a>
       </td>
     </tr>

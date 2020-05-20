@@ -22,8 +22,8 @@ export class RequestApproveComponent implements OnInit {
   requestId: number = 0;
 
   constructor(
-    private requestSvc: RequestService,
     private sysSvc: SystemService,
+    private requestSvc: RequestService,
     private liSvc: LineItemService,
     private router: Router,
     private route: ActivatedRoute
@@ -67,7 +67,7 @@ export class RequestApproveComponent implements OnInit {
       if (jr.errors == null) {
         this.router.navigateByUrl('/request/review/' + this.user.id);
       } else {
-        console.log('***Error rejecting request***' + jr.errors);
+        console.log('***Error rejecting Request***' + jr.errors);
       }
     });
   }

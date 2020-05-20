@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/model/user.class';
-import { Request } from 'src/app/model/request.class';
-import { UserService } from 'src/app/service/user.service';
-import { RequestService } from 'src/app/service/request.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Request } from 'src/app/model/request.class';
+import { RequestService } from 'src/app/service/request.service';
+import { User } from 'src/app/model/user.class';
+import { UserService } from 'src/app/service/user.service';
+import { Product } from 'src/app/model/product.class';
+import { LineItem } from 'src/app/model/line-item.class';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-request-edit',
@@ -12,18 +15,22 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class RequestEditComponent implements OnInit {
   title: string = 'Edit Request';
-  users: User[] = [];
-  request: Request = new Request();
   requestId: number = 0;
+  request: Request = new Request();
+  users: User[] = [];
+  loggedUser: User = null;
 
   constructor(
-    private requestSvc: RequestService,
-    private userSvc: UserService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sysSvc: SystemService,
+    private userSvc: UserService,
+    private requestSvc: RequestService
   ) {}
 
   ngOnInit(): void {
+    this.sysSvc.checkLogin();
+    this.loggedUser = this.sysSvc.loggedInUser;
     this.route.params.subscribe((parms) => (this.requestId = parms['id']));
     this.requestSvc.get(this.requestId).subscribe((jr) => {
       this.request = jr.data as Request;
@@ -34,12 +41,16 @@ export class RequestEditComponent implements OnInit {
     });
   }
 
+  compUser(a: User, b: User): boolean {
+    return a && b && a.id === b.id;
+  }
+
   save() {
     this.requestSvc.edit(this.request).subscribe((jr) => {
       if (jr.errors == null) {
         this.router.navigateByUrl('/request/list');
       } else {
-        console.log('*** Error editing request:  ', this.request, jr.errors);
+        console.log('***Error editing request***', this.request, jr.errors);
       }
     });
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/service/user.service';
 import { RequestService } from 'src/app/service/request.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/model/user.class';
@@ -10,14 +9,14 @@ import { User } from 'src/app/model/user.class';
   styleUrls: ['./request-review.component.css'],
 })
 export class RequestReviewComponent implements OnInit {
-  requests: Request[] = [];
   title: string = 'Review Submitted Requests';
+  requests: Request[] = [];
   user: User = null;
   userId: number = 0;
 
   constructor(
-    private requestSvc: RequestService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private requestSvc: RequestService
   ) {}
 
   ngOnInit(): void {

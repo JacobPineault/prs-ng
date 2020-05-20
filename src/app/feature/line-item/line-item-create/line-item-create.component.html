@@ -1,13 +1,17 @@
 <app-menu></app-menu>
-<div *ngIf="lineItem" class="component">
+<div class="component" *ngIf="request">
   <section class="heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
-    <span> | <a routerLink="/request/lines">Return to List</a></span>
+    <span
+      ><a routerLink="/request/lines/{{ requestId }}">Return to List</a></span
+    >
   </section>
+</div>
+<div>
   <main class="single">
     <table class="table table-sm">
       <tr>
-        <td>Product:</td>
+        <label>Product:</label>
         <td>
           <select
             [(ngModel)]="lineItem.product"
@@ -15,9 +19,6 @@
             type="text"
             [compareWith]="compProduct"
           >
-            <option value="none" disabled selected="selected">
-              Select an Option
-            </option>
             <option *ngFor="let product of products" [ngValue]="product"
               >${{ product.price }} - {{ product.name }} |
               {{ product.vendor.name }}</option
@@ -26,19 +27,22 @@
         </td>
       </tr>
       <tr>
-        <td>Quantity:</td>
+        <label>Quantity:</label>
         <td>
           <input
             [(ngModel)]="lineItem.quantity"
             class="rounded"
-            min="0"
+            min="1"
             type="number"
+            required
           />
         </td>
       </tr>
     </table>
   </main>
   <span>
-    <span> <a (click)="add()" class="btn btn-sm btn-warning">Add Item</a></span>
+    <span *ngIf="lineItem.product && lineItem.quantity != 0">
+      <button (click)="add()" class="btn btn-sm btn-primary">Add Item</button>
+    </span>
   </span>
 </div>
