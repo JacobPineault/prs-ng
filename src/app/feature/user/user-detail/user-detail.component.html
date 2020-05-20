@@ -5,120 +5,47 @@
     <span> | <a routerLink="/user/list">Return to List</a></span>
   </section>
   <main class="single">
-    <table class="table table-sm">
+    <table
+      class="table table-sm"
+      style="margin: 50px auto; padding: 5px 20px; width: 60%;"
+      *ngIf="user"
+    >
       <thead>
-        <tr>
+        <tr class="text-center">
           <td>
-            <b>Information for User: </b> {{ user.lastName }},
-            {{ user.firstName }}
+            <b>{{ user.firstName }} {{ user.lastName }}</b> &nbsp; &nbsp; ID:
+            {{ user.id }}
+          </td>
+          <td *ngIf="user.admin == true" class="badge badge-success">
+            Admin&nbsp;
+          </td>
+          <td *ngIf="user.reviewer == true" class="badge badge-primary">
+            Reviewer
           </td>
         </tr>
       </thead>
-      <tr>
-        <td>ID:</td>
-        <td>{{ user.id }}</td>
-      </tr>
-      <tr>
-        <td>User Name:</td>
-        <td>
-          <input
-            [(ngModel)]="user.userName"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Password:</td>
-        <td>
-          <input
-            [(ngModel)]="user.password"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>First Name:</td>
-        <td>
-          <input
-            [(ngModel)]="user.firstName"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Last Name:</td>
-        <td>
-          <input
-            [(ngModel)]="user.lastName"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Phone Number:</td>
-        <td>
-          <input
-            [(ngModel)]="user.phoneNumber"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Email:</td>
-        <td>
-          <input
-            [(ngModel)]="user.email"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Reviewer Status:</td>
-        <td>
-          <input
-            [(ngModel)]="user.reviewer"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
-      <tr>
-        <td>Admin Status:</td>
-        <td>
-          <input
-            [(ngModel)]="user.admin"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
-      </tr>
+      <tbody>
+        <tr scope="row" class="text-center">
+          <td>Email: {{ user.email }}</td>
+          <td>Phone Number: {{ user.phoneNumber }}</td>
+        </tr>
+        <tr scope="row" class="text-center">
+          <td>User Name: {{ user.userName }}</td>
+          <td>Password: {{ user.password }}</td>
+        </tr>
+      </tbody>
     </table>
   </main>
+</div>
+<div class="center">
+  <span
+    ><a routerLink="/user/edit/{{ user.id }}" class="btn btn-sm btn-warning"
+      >Edit</a
+    ></span
+  >&nbsp;
   <span>
-    <span
-      ><a routerLink="/user/edit/{{ user.id }}" class="btn btn-sm btn-warning"
-        >Edit</a
-      ></span
-    >
-    <span>
-      <b> | </b>
-      <button (click)="delete()" class="btn btn-sm btn-danger">
-        Delete
-      </button></span
-    >
-  </span>
+    <button (click)="delete()" class="btn btn-sm btn-danger">
+      Delete
+    </button></span
+  >
 </div>

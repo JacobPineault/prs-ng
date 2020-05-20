@@ -12,6 +12,8 @@ export class UserDetailComponent implements OnInit {
   user: User = new User();
   title: string = 'User Detail';
   userId: number = 0;
+  isAdmin: string;
+  isReviewer: string;
 
   constructor(
     private userSvc: UserService,

@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   // space
+  { path: 'user/login', component: UserLoginComponent },
   { path: 'user/list', component: UserListComponent },
   { path: 'user/detail/:id', component: UserDetailComponent },
   { path: 'user/create', component: UserCreateComponent },
@@ -59,7 +60,6 @@ const routes: Routes = [
   { path: 'request/review/:id', component: RequestReviewComponent },
   { path: 'request/approve/:id', component: RequestApproveComponent },
   // space
-  { path: 'user/login', component: UserLoginComponent },
   { path: 'about/misc', component: AboutMiscComponent },
   { path: '**', component: HomePageComponent },
 ];

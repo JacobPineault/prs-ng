@@ -1,0 +1,7 @@
+.center {
+  display: flex;
+  width: 10%;
+  align-content: center;
+  margin: auto;
+  justify-content: center;
+}

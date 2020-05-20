@@ -42,7 +42,7 @@ export class LineItemEditComponent implements OnInit {
 
   save() {
     this.liSvc.edit(this.lineItem).subscribe((jr) => {
-      if (jr.errors == null) {
+      if (!jr.errors) {
         this.router.navigateByUrl(
           '/line-item/list/' + this.lineItem.request.id
         );

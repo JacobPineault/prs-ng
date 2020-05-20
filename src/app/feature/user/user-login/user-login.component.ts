@@ -20,10 +20,8 @@ export class UserLoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // testing purposes
-    this.user.userName = 'mfreeman';
-    this.user.password = 'pwd';
-    // keep
+    this.user.userName = 'jakepino';
+    this.user.password = 'admin';
     this.sysSvc.loggedInUser = null;
   }
 
@@ -33,18 +31,15 @@ export class UserLoginComponent implements OnInit {
       console.log('jr:', jr);
       if (!jr.errors) {
         if (!jr.data) {
-          // no error, but no user? invalid combo
-          this.message = '1Invalid Username/Password combo. Please Retry';
+          this.message = '***User not found. Please Retry***';
         } else {
-          // g2g!
           this.user = jr.data as User;
           this.sysSvc.loggedInUser = this.user;
           console.log('setting user in sysSvc...', this.sysSvc.loggedInUser);
-          // good login, navigate to 'home'
           this.router.navigateByUrl('/home');
         }
       } else {
-        this.message = '2Invalid Username/Password combo. Please Retry';
+        this.message = '***Invalid Username/Password combo. Please Retry***';
       }
     });
   }

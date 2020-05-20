@@ -10,13 +10,25 @@ import { SystemService } from 'src/app/service/system.service';
 })
 export class MenuComponent implements OnInit {
   menuItems: MenuItem[] = [];
-  user: User = null;
+  user: User = new User();
+  id: number;
 
   constructor(private sysSvc: SystemService) {}
 
   ngOnInit(): void {
     this.sysSvc.checkLogin();
     this.user = this.sysSvc.loggedInUser;
+    // this.menuItems = [
+    //   new MenuItem('Home', '/home', 'Home'),
+    //   new MenuItem('User', '/users/list', 'Users List'),
+    //   new MenuItem('Vendor', '/vendors/list', 'Vendors List'),
+    //   new MenuItem('Product', '/products/list', 'Products List'),
+    //   new MenuItem('Request', '/requests/list', 'Requests List'),
+    //   // new MenuItem("Review", "/requests/list-review", "Review List")
+    // ];
+
+    // this.id = this.user.id;
+
     if (this.user.reviewer == true) {
       this.menuItems = [
         new MenuItem('Home', '/home', 'Home'),
@@ -39,6 +51,11 @@ export class MenuComponent implements OnInit {
         new MenuItem('Vendor', '/vendor/list', 'Vendor List'),
         new MenuItem('Product', '/product/list', 'Product List'),
         new MenuItem('Request', '/request/list', 'Request List'),
+        // new MenuItem(
+        //   'Review',
+        //   '/request/review/' + this.user.id,
+        //   'Review Requests'
+        // ),
         new MenuItem('Login', '/user/login', 'User Login'),
         new MenuItem('About', '/about/misc', 'About'),
       ];
