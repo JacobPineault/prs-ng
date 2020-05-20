@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/service/request.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/model/user.class';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-request-review',
@@ -16,13 +17,18 @@ export class RequestReviewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private sysSvc: SystemService,
     private requestSvc: RequestService
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((parms) => (this.userId = parms['id']));
+    this.sysSvc.checkLogin();
+    this.route.params.subscribe(
+      (parms) => (this.loggedInUser.id = parms['id'])
+    );
     this.requestSvc.review(this.userId).subscribe((jr) => {
       this.requests = jr.data as Request[];
+      console.log(this.requests);
     });
   }
 }

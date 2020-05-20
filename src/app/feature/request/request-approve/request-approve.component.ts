@@ -23,28 +23,35 @@ export class RequestApproveComponent implements OnInit {
 
   constructor(
     private sysSvc: SystemService,
-    private requestSvc: RequestService,
-    private liSvc: LineItemService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private requestSvc: RequestService,
+    private liSvc: LineItemService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((parms) => (this.requestId = parms['id']));
     this.requestSvc.get(this.requestId).subscribe((jr) => {
-      this.request = jr.data as Request;
+      if (!jr.errors) {
+        this.request = jr.data as Request;
+      } else {
+        console.log('***Error getting request');
+      }
+    });
+    this.liSvc.list(this.requestId).subscribe((jr) => {
+      if (!jr.errors) {
+        this.lineItems = jr.data as LineItem[];
+      } else {
+        console.log('***Error getting line-items');
+      }
     });
     this.sysSvc.checkLogin();
     this.user = this.sysSvc.loggedInUser;
-
-    this.liSvc.list(this.requestId).subscribe((jr) => {
-      this.lineItems = jr.data as LineItem[];
-    });
   }
 
   accept() {
     this.requestSvc.approve(this.request).subscribe((jr) => {
-      if (jr.errors == null) {
+      if (!jr.errors) {
         this.router.navigateByUrl('/request/review/' + this.user.id);
       } else {
         console.log('***Error approving request***' + jr.errors);
@@ -53,19 +60,19 @@ export class RequestApproveComponent implements OnInit {
   }
 
   reject() {
-    this.requestSvc.edit(this.request).subscribe((jr) => {
-      if (jr.errors == null) {
-      } else {
-        console.log(
-          '***Error adding justification***',
-          this.request,
-          jr.errors
-        );
-      }
-    });
+    // this.requestSvc.edit(this.request).subscribe((jr) => {
+    //   if (!jr.errors) {
+    //   } else {
+    //     console.log(
+    //       '***Error adding justification***',
+    //       this.request,
+    //       jr.errors
+    //     );
+    //   }
+    // });
     this.requestSvc.reject(this.request).subscribe((jr) => {
-      if (jr.errors == null) {
-        this.router.navigateByUrl('/request/review/' + this.user.id);
+      if (!jr.errors) {
+        this.router.navigateByUrl('/request/list');
       } else {
         console.log('***Error rejecting Request***' + jr.errors);
       }

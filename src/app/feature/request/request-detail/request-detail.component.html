@@ -66,8 +66,8 @@
     </table>
   </main>
   <span *ngIf="request">
-    <span *ngIf="request.status == 'New'"
-      ><a
+    <span>
+      <a
         routerLink="/request/edit/{{ request.id }}"
         class="btn btn-sm btn-warning"
         >Edit</a

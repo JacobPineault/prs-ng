@@ -30,7 +30,7 @@ export class RequestCreateComponent implements OnInit {
   save() {
     this.request.user = this.user;
     this.requestSvc.create(this.request).subscribe((jr) => {
-      if (jr.errors == null) {
+      if (!jr.errors) {
         this.router.navigateByUrl('/request/list');
         console.log(this.request);
       } else {
