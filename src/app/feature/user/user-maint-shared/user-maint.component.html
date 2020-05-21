@@ -64,6 +64,7 @@
             [(ngModel)]="user.phoneNumber"
             class="rounded"
             type="text"
+            maxlength="12"
             style="background-color: azure;"
           />
         </td>
@@ -106,8 +107,16 @@
     </table>
   </main>
   <span
+    *ngIf="
+      user.firstName &&
+      user.lastName &&
+      user.userName &&
+      user.password &&
+      user.phoneNumber &&
+      user.email
+    "
     ><button (click)="save()" class="btn btn-sm btn-primary">
-      {{ submitBtnTitle }}
+      Save
     </button></span
   >
   <!-- <span

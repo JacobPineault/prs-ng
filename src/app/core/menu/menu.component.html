@@ -4,7 +4,9 @@
     <li *ngFor="let mi of menuItems" title="{{ mi.tooltip }}">
       <a routerLink="{{ mi.href }}">{{ mi.display }}</a>
     </li>
-    <li *ngIf="user">{{ user.firstName }} {{ user.lastName }}</li>
+    <li *ngIf="user" class="text-warning">
+      <b>{{ user.firstName }}&nbsp;{{ user.lastName }}</b>
+    </li>
   </ul>
 </nav>
 <!-- <nav class="d-flex bd-highlight">

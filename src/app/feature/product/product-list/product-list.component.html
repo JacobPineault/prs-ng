@@ -12,22 +12,22 @@
   <thead>
     <tr>
       <th>Product Name</th>
-      <th>Vendor</th>
       <th>Price</th>
       <th>Unit</th>
+      <th>Vendor</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
       <td>{{ product.name }}</td>
-      <td>{{ product.vendor.name }}</td>
       <td>${{ product.price }}</td>
       <td>{{ product.unit }}</td>
+      <td>{{ product.vendor.name }}</td>
       <td *ngIf="loggedUser && loggedUser.admin == true">
         <a routerLink="/product/detail/{{ product.id }}"
           ><img src="assets/details.png" width="20" height="20" title="Detail"
         /></a>
-        |
+        &nbsp;
         <a routerLink="/product/edit/{{ product.id }}"
           ><img
             src="assets/pencil-icon.png"

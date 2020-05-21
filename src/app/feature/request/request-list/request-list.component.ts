@@ -14,6 +14,7 @@ export class RequestListComponent implements OnInit {
   requests: Request[] = [];
   myRequests: Request[] = [];
   user: User = null;
+  loggedUser: User = null;
 
   constructor(
     private requestSvc: RequestService,
@@ -23,6 +24,7 @@ export class RequestListComponent implements OnInit {
   ngOnInit(): void {
     this.sysSvc.checkLogin();
     this.user = this.sysSvc.loggedInUser;
+    this.loggedUser = this.sysSvc.loggedInUser;
 
     this.requestSvc.list().subscribe((jr) => {
       this.requests = jr.data as Request[];

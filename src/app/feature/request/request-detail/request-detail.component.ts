@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/service/request.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Request } from 'src/app/model/request.class';
+import { User } from 'src/app/model/user.class';
+import { SystemService } from 'src/app/service/system.service';
 
 @Component({
   selector: 'app-request-detail',
@@ -12,14 +14,18 @@ export class RequestDetailComponent implements OnInit {
   title: string = 'Request-Detail';
   request: Request = new Request();
   requestId: number = 0;
+  loggedUser: User = null;
 
   constructor(
-    private requestSvc: RequestService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private requestSvc: RequestService,
+    private sysSvc: SystemService
   ) {}
 
   ngOnInit(): void {
+    this.sysSvc.checkLogin();
+    this.loggedUser = this.sysSvc.loggedInUser;
     this.route.params.subscribe((parms) => (this.requestId = parms['id']));
     this.requestSvc.get(this.requestId).subscribe((jr) => {
       this.request = jr.data as Request;

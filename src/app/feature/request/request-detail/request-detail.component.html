@@ -65,14 +65,19 @@
       </tr>
     </table>
   </main>
-  <span *ngIf="request">
+  <span
+    *ngIf="
+      (request && request.user.id == loggedUser.id) ||
+      (request && loggedUser.admin == true)
+    "
+  >
     <span>
       <a
         routerLink="/request/edit/{{ request.id }}"
         class="btn btn-sm btn-warning"
         >Edit</a
       >
-      |
+      &nbsp;
     </span>
     <span
       ><button (click)="delete()" class="btn btn-sm btn-danger">

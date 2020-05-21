@@ -14,6 +14,7 @@
             [(ngModel)]="vendor.code"
             class="rounded"
             type="text"
+            maxlength="10"
             style="background-color: azure;"
           />
         </td>
@@ -38,6 +39,7 @@
             [(ngModel)]="vendor.phoneNumber"
             class="rounded"
             type="text"
+            maxlength="12"
             style="background-color: azure;"
           />
         </td>
@@ -85,9 +87,9 @@
         <td>
           State:
         </td>
-        <!--Maybe drop down menu for states? -->
         <td>
           <select [(ngModel)]="vendor.state" class="rounded">
+            <option value="" disabled selected> Select a State </option>
             <option value="AK"> AK </option>
             <option value="AL"> AL </option>
             <option value="AR"> AR </option>
@@ -151,13 +153,25 @@
             [(ngModel)]="vendor.zipCode"
             class="rounded"
             type="text"
+            maxlength="5"
             style="background-color: azure;"
           />
         </td>
       </tr>
     </table>
   </main>
-  <span>
+  <span
+    *ngIf="
+      vendor.code &&
+      vendor.name &&
+      vendor.phoneNumber &&
+      vendor.email &&
+      vendor.address &&
+      vendor.city &&
+      vendor.state &&
+      vendor.zipCode
+    "
+  >
     <button (click)="save()" class="btn btn-sm btn-primary">
       {{ submitBtnTitle }}
     </button>

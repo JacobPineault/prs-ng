@@ -35,7 +35,7 @@ export class VendorDetailComponent implements OnInit {
 
   delete() {
     this.vendorSvc.delete(this.vendorId).subscribe((jr) => {
-      if (jr.errors == null) {
+      if (!jr.errors) {
         console.log(jr.data as string);
         this.router.navigateByUrl('/vendor/list');
       } else {

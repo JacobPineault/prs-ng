@@ -29,7 +29,12 @@
       <tr>
         <td>Part Number:</td>
         <td>
-          <input [(ngModel)]="product.partNumber" class="rounded" type="text" />
+          <input
+            [(ngModel)]="product.partNumber"
+            class="rounded"
+            maxlength="50"
+            type="text"
+          />
         </td>
       </tr>
       <tr>
@@ -58,7 +63,11 @@
       </tr>
     </table>
   </main>
-  <span>
+  <span
+    *ngIf="
+      product.vendor && product.partNumber && product.name && product.price
+    "
+  >
     <span> <a (click)="save()" class="btn btn-sm btn-warning">Save</a></span>
   </span>
 </div>

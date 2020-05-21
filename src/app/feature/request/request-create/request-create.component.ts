@@ -14,7 +14,7 @@ export class RequestCreateComponent implements OnInit {
   title: string = 'Create Request';
   request: Request = new Request();
   user: User = null;
-  submitBtnTitle: string = 'Request Create';
+  submitBtnTitle: string = 'Create Request';
 
   constructor(
     private requestSvc: RequestService,

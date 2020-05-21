@@ -8,7 +8,9 @@
     <table class="table table-sm">
       <thead>
         <tr>
-          <td><b>Information for Vendor:</b> {{ vendor.name }}</td>
+          <td>
+            Information for Vendor: <b>{{ vendor.name }}</b>
+          </td>
         </tr>
       </thead>
       <tr>
@@ -17,91 +19,35 @@
       </tr>
       <tr>
         <td>Vendor Code:</td>
-        <td>
-          <input
-            [(ngModel)]="vendor.code"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
+        <td>{{ vendor.code }}</td>
       </tr>
       <tr>
         <td>Vendor Name:</td>
-        <td>
-          <input
-            [(ngModel)]="vendor.name"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
+        <td>{{ vendor.name }}</td>
       </tr>
       <tr>
         <td>Phone Number:</td>
-        <td>
-          <input
-            [(ngModel)]="vendor.phoneNumber"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
+        <td>{{ vendor.phoneNumber }}</td>
       </tr>
       <tr>
         <td>Email:</td>
-        <td>
-          <input
-            [(ngModel)]="vendor.email"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
+        <td>{{ vendor.email }}</td>
       </tr>
       <tr>
         <td>Address:</td>
-        <td>
-          <input
-            [(ngModel)]="vendor.address"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
+        <td>{{ vendor.address }}</td>
       </tr>
       <tr>
         <td>City:</td>
-        <td>
-          <input
-            [(ngModel)]="vendor.city"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
+        <td>{{ vendor.city }}</td>
       </tr>
       <tr>
         <td>State:</td>
-        <td>
-          <input
-            [(ngModel)]="vendor.state"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
+        <td>{{ vendor.state }}</td>
       </tr>
       <tr>
         <td>Zip Code:</td>
-        <td>
-          <input
-            [(ngModel)]="vendor.zipCode"
-            class="rounded"
-            type="text"
-            READONLY
-          />
-        </td>
+        <td>{{ vendor.zipCode }}</td>
       </tr>
     </table>
   </main>
@@ -115,7 +61,7 @@
         ></span
       >
       <span>
-        <b> | </b>
+        &nbsp;
         <button (click)="delete()" class="btn btn-sm btn-danger">
           Delete
         </button></span

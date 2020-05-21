@@ -1,13 +1,15 @@
 <app-menu></app-menu>
 <section class="heading">
   <span class="page-title front weight-bold font-italic">[{{ title }}]</span>
-  <a routerLink="/vendor/create"
-    ><img
-      width="20"
-      height="20"
-      src="assets/add-icon.png"
-      title="Add New Vendor"
-  /></a>
+  <span *ngIf="loggedUser.admin == true">
+    <a routerLink="/vendor/create"
+      ><img
+        width="20"
+        height="20"
+        src="assets/add-icon.png"
+        title="Add New Vendor"
+    /></a>
+  </span>
 </section>
 <table *ngIf="vendors" class="table table-sm table-hover table-striped">
   <thead>
@@ -17,9 +19,8 @@
       <th>Address</th>
       <th>City</th>
       <th>State</th>
-      <th>Zip Code</th>
       <th>Email</th>
-      <th>Action</th>
+      <th *ngIf="loggedUser.admin == true">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -29,9 +30,8 @@
       <td>{{ vendor.address }}</td>
       <td>{{ vendor.city }}</td>
       <td>{{ vendor.state }}</td>
-      <td>{{ vendor.zipCode }}</td>
       <td>{{ vendor.email }}</td>
-      <td>
+      <td *ngIf="loggedUser.admin == true">
         <a routerLink="/vendor/detail/{{ vendor.id }}">
           <img
             width="20"
@@ -39,7 +39,7 @@
             src="assets/details.png"
             title="Vendor Details"
         /></a>
-        <b> | </b>
+        &nbsp;
         <a routerLink="/vendor/edit/{{ vendor.id }}">
           <img
             width="20"
