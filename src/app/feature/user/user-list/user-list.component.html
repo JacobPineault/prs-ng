@@ -15,7 +15,7 @@
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>Phone Number</th>
+      <th>User Name</th>
       <th>Email</th>
       <th>Reviewer</th>
       <th>Admin</th>
@@ -26,10 +26,18 @@
     <tr *ngFor="let user of users">
       <td>{{ user.firstName }}</td>
       <td>{{ user.lastName }}</td>
-      <td>{{ user.phoneNumber }}</td>
+      <td>{{ user.userName }}</td>
       <td>{{ user.email }}</td>
-      <td>{{ user.reviewer }}</td>
-      <td>{{ user.admin }}</td>
+      <td>
+        <span *ngIf="user.reviewer == true" class="badge badge-primary">
+          Reviewer
+        </span>
+      </td>
+      <td>
+        <span *ngIf="user.admin == true" class="badge badge-success">
+          Admin&nbsp;
+        </span>
+      </td>
       <td>
         <a routerLink="/user/detail/{{ user.id }}">
           <img
@@ -38,7 +46,7 @@
             src="assets/details.png"
             title="User Details"
         /></a>
-        <b> | </b>
+        &nbsp;
         <a routerLink="/user/edit/{{ user.id }}">
           <img
             width="20"

@@ -8,7 +8,12 @@
       <tr>
         <td>First Name:</td>
         <td>
-          <input [(ngModel)]="user.firstName" class="rounded" type="text" />
+          <input
+            [(ngModel)]="user.firstName"
+            class="rounded"
+            type="text"
+            style="background-color: azure;"
+          />
         </td>
       </tr>
       <tr>
@@ -16,7 +21,12 @@
           Last Name:
         </td>
         <td>
-          <input [(ngModel)]="user.lastName" class="rounded" type="text" />
+          <input
+            [(ngModel)]="user.lastName"
+            class="rounded"
+            type="text"
+            style="background-color: azure;"
+          />
         </td>
       </tr>
       <tr>
@@ -24,7 +34,12 @@
           User Name:
         </td>
         <td>
-          <input [(ngModel)]="user.userName" class="rounded" type="text" />
+          <input
+            [(ngModel)]="user.userName"
+            class="rounded"
+            type="text"
+            style="background-color: azure;"
+          />
         </td>
       </tr>
       <tr>
@@ -32,7 +47,12 @@
           Password:
         </td>
         <td>
-          <input [(ngModel)]="user.password" class="rounded" type="text" />
+          <input
+            [(ngModel)]="user.password"
+            class="rounded"
+            type="text"
+            style="background-color: azure;"
+          />
         </td>
       </tr>
       <tr>
@@ -40,7 +60,12 @@
           Phone Number:
         </td>
         <td>
-          <input [(ngModel)]="user.phoneNumber" class="rounded" type="text" />
+          <input
+            [(ngModel)]="user.phoneNumber"
+            class="rounded"
+            type="text"
+            style="background-color: azure;"
+          />
         </td>
       </tr>
       <tr>
@@ -48,33 +73,34 @@
           Email:
         </td>
         <td>
-          <input [(ngModel)]="user.email" class="rounded" type="text" />
+          <input
+            [(ngModel)]="user.email"
+            class="rounded"
+            type="text"
+            style="background-color: azure;"
+          />
         </td>
       </tr>
       <tr>
         <td>
           Reviewer status:
         </td>
-        <!-- <ejs-switch #wswitch [(ngModel)]="user.reviewer"> </ejs-switch> -->
-        <!-- <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round"></span>
-        </label> -->
-        <!-- <mat-slider min="1" max="100" step="1" value="1"></mat-slider> -->
         <td>
-          <input [(ngModel)]="user.reviewer" class="rounded" type="text" />
+          <label class="switch">
+            <input [(ngModel)]="user.reviewer" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
         </td>
       </tr>
       <tr>
         <td>
           Admin status:
         </td>
-        <!-- <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round"></span>
-        </label> -->
         <td>
-          <input [(ngModel)]="user.admin" class="rounded" type="text" />
+          <label class="switch">
+            <input [(ngModel)]="user.admin" type="checkbox" />
+            <span class="slider round"></span>
+          </label>
         </td>
       </tr>
     </table>

@@ -24,7 +24,7 @@
   <tbody *ngIf="requests">
     <tr *ngFor="let request of requests">
       <td>{{ request.submittedDate }}</td>
-      <td>{{ request.user.firstName }}{{ request.user.lastName }}</td>
+      <td>{{ request.user.firstName }}&nbsp;{{ request.user.lastName }}</td>
       <td>{{ request.description }}</td>
       <td>{{ request.dateNeeded }}</td>
       <td>{{ request.status }}</td>

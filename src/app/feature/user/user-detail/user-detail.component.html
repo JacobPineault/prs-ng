@@ -12,15 +12,17 @@
     >
       <thead>
         <tr class="text-center">
-          <td>
+          <td scope="col">
             <b>{{ user.firstName }} {{ user.lastName }}</b> &nbsp; &nbsp; ID:
             {{ user.id }}
           </td>
-          <td *ngIf="user.admin == true" class="badge badge-success">
-            Admin&nbsp;
-          </td>
-          <td *ngIf="user.reviewer == true" class="badge badge-primary">
-            Reviewer
+          <td>
+            <span *ngIf="user.admin == true" class="badge badge-success">
+              Admin&nbsp;
+            </span>
+            <span *ngIf="user.reviewer == true" class="badge badge-primary">
+              Reviewer
+            </span>
           </td>
         </tr>
       </thead>
