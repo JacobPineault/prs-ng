@@ -42,28 +42,30 @@
         >
           REVIEWER
         </span>
-        <!-- </td>
-      <td> -->
         <span *ngIf="user.admin == true" class="badge badge-pill badge-success">
           ADMIN
         </span>
       </td>
-      <td *ngIf="loggedUser.admin == true">
-        <a routerLink="/user/detail/{{ user.id }}">
-          <img
-            width="20"
-            height="20"
-            src="assets/details.png"
-            title="User Details"
-        /></a>
+      <td>
+        <span *ngIf="loggedUser.admin">
+          <a routerLink="/user/detail/{{ user.id }}">
+            <img
+              width="20"
+              height="20"
+              src="assets/details.png"
+              title="User Details"
+          /></a>
+        </span>
         &nbsp;
-        <a routerLink="/user/edit/{{ user.id }}">
-          <img
-            width="20"
-            height="20"
-            src="assets/pencil-icon.png"
-            title="Edit User"
-        /></a>
+        <span *ngIf="loggedUser.id == user.id || loggedUser.admin">
+          <a routerLink="/user/edit/{{ user.id }}">
+            <img
+              width="20"
+              height="20"
+              src="assets/pencil-icon.png"
+              title="Edit User"
+          /></a>
+        </span>
       </td>
     </tr>
   </tbody>

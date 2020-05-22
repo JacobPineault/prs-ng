@@ -84,25 +84,27 @@
       </tr>
       <tr>
         <td>
-          Reviewer status:
+          Reviewer Status:
         </td>
-        <td>
+        <td *ngIf="user.admin">
           <label class="switch">
             <input [(ngModel)]="user.reviewer" type="checkbox" />
             <span class="slider round"></span>
           </label>
         </td>
+        <td *ngIf="!user.admin">Not Admin</td>
       </tr>
       <tr>
         <td>
-          Admin status:
+          Admin Status:
         </td>
-        <td>
+        <td *ngIf="user.admin">
           <label class="switch">
             <input [(ngModel)]="user.admin" type="checkbox" />
             <span class="slider round"></span>
           </label>
         </td>
+        <td *ngIf="!user.admin">Not Reviewer</td>
       </tr>
     </table>
   </main>

@@ -37,7 +37,9 @@
               request.status
             }}</span>
           </td>
-          <td>${{ request.total }}</td>
+          <td>
+            $<u>{{ request.total }}</u>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -73,7 +75,7 @@
           <td>{{ lineItem.quantity }}</td>
           <td>${{ lineItem.product.price }}</td>
           <td>${{ lineItem.product.price * lineItem.quantity }}</td>
-          <td class="actions">
+          <td class="actions" *ngIf="request.status == 'New'">
             <a routerLink="/request/edit/{{ lineItem.id }}">
               <img
                 src="assets/pencil-icon.png"
@@ -100,7 +102,7 @@
       No items added to request yet.
     </span>
   </span>
-  <span *ngIf="lineItems.length > 0">
+  <span *ngIf="lineItems.length > 0 && request.status == 'New'">
     <button (click)="submit()" class="btn btn-sm btn-primary">
       Submit Request
     </button>

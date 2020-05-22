@@ -5,9 +5,9 @@
     <span> | <a routerLink="/request/list">Return to list</a></span>
   </section>
   <main class="single">
-    <tr *ngIf="loggedUser.id == request.user.id || loggedUser.admin == true">
+    <tr>
       <td>User:</td>
-      <td>
+      <td *ngIf="loggedUser.admin == true">
         <select
           [(ngModel)]="request.user"
           class="rounded"
@@ -15,9 +15,12 @@
           required
         >
           <option *ngFor="let user of users" [ngValue]="user"
-            >{{ user.firstName }} {{ user.lastName }}</option
+            >{{ user.firstName }}&nbsp;{{ user.lastName }}</option
           >
         </select>
+      </td>
+      <td *ngIf="!loggedUser.admin">
+        {{ user.firstName }}&nbsp;{{ user.lastName }}
       </td>
     </tr>
     <tr>
@@ -37,6 +40,10 @@
           ><img src="assets/check.png" width="25"
         /></span>
       </td>
+
+      <td *ngIf="loggedUser.id != request.user.id">
+        {{ request.description }}
+      </td>
     </tr>
     <tr>
       <td>Justification:</td>
@@ -55,6 +62,10 @@
           ><img src="assets/check.png" width="25"
         /></span>
       </td>
+
+      <td *ngIf="loggedUser.id != request.user.id">
+        {{ request.justification }}
+      </td>
     </tr>
     <tr>
       <td>Date Needed:</td>
@@ -71,6 +82,10 @@
         <span *ngIf="request.dateNeeded"
           ><img src="assets/check.png" width="25"
         /></span>
+      </td>
+
+      <td *ngIf="loggedUser.id != request.user.id">
+        {{ request.dateNeeded }}
       </td>
     </tr>
     <tr>
@@ -93,6 +108,7 @@
   </main>
   <span
     *ngIf="
+      request.status != rejected &&
       request.description &&
       request.justification &&
       request.dateNeeded &&
@@ -101,7 +117,7 @@
     "
   >
     <button (click)="save()" class="btn btn-sm btn-primary">
-      Edit Request
+      Save
     </button>
   </span>
 </div>
