@@ -5,7 +5,7 @@
     <span> | <a routerLink="/product/list">Return to List</a></span>
   </section>
   <main class="single">
-    <table class="table table-sm">
+    <table *ngIf="product" class="table table-sm">
       <tr>
         <td>ID:</td>
         <td>{{ product.id }}</td>

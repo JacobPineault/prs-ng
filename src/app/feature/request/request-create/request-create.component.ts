@@ -15,6 +15,7 @@ export class RequestCreateComponent implements OnInit {
   request: Request = new Request();
   user: User = null;
   submitBtnTitle: string = 'Create Request';
+  requestId: number = 0;
 
   constructor(
     private requestSvc: RequestService,
@@ -31,7 +32,8 @@ export class RequestCreateComponent implements OnInit {
     this.request.user = this.user;
     this.requestSvc.create(this.request).subscribe((jr) => {
       if (!jr.errors) {
-        this.router.navigateByUrl('/request/list');
+        this.requestId = this.request.id;
+        this.router.navigateByUrl('request/lines/' + this.requestId);
         console.log(this.request);
       } else {
         console.log(

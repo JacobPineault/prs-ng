@@ -35,7 +35,10 @@ export class UserLoginComponent implements OnInit {
         } else {
           this.user = jr.data as User;
           this.sysSvc.loggedInUser = this.user;
-          console.log('setting user in sysSvc...', this.sysSvc.loggedInUser);
+          console.log(
+            'Setting user in SystemService...',
+            this.sysSvc.loggedInUser
+          );
           this.router.navigateByUrl('/home');
         }
       } else {

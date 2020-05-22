@@ -17,8 +17,9 @@
       <th>Last Name</th>
       <th>User Name</th>
       <th>Email</th>
-      <th>Reviewer</th>
-      <th>Admin</th>
+      <th>Status</th>
+      <!-- <th>Reviewer</th>
+      <th>Admin</th> -->
       <th *ngIf="loggedUser.admin == true">Action</th>
     </tr>
   </thead>
@@ -29,13 +30,22 @@
       <td>{{ user.userName }}</td>
       <td>{{ user.email }}</td>
       <td>
-        <span *ngIf="user.reviewer == true" class="badge badge-primary">
-          Reviewer
+        <span
+          *ngIf="!user.reviewer && !user.admin"
+          class="badge badge-pill badge-secondary"
+        >
+          USER
         </span>
-      </td>
-      <td>
-        <span *ngIf="user.admin == true" class="badge badge-success">
-          Admin&nbsp;
+        <span
+          *ngIf="user.reviewer == true"
+          class="badge badge-pill badge-primary"
+        >
+          REVIEWER
+        </span>
+        <!-- </td>
+      <td> -->
+        <span *ngIf="user.admin == true" class="badge badge-pill badge-success">
+          ADMIN
         </span>
       </td>
       <td *ngIf="loggedUser.admin == true">

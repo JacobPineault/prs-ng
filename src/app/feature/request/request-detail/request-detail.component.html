@@ -1,12 +1,12 @@
 <app-menu></app-menu>
-<div *ngIf="request" class="component">
+<div *ngIf="request && loggedUser" class="component">
   <section class="heading">
     <span class="page-title front weight-bold font-italic">{{ title }}</span>
     <span> | <a routerLink="/request/list">Return to List</a></span>
   </section>
   <p *ngIf="!request">Loading</p>
   <section *ngIf="request">
-    <table class="table table-sm">
+    <table class="table table-sm table-hover table-striped">
       <thead>
         <tr>
           <th>User</th>
@@ -59,9 +59,13 @@
         <td>Status:</td>
         <td>{{ request.status }}</td>
       </tr>
-      <tr>
-        <td>Rejection Reason:</td>
-        <td>{{ request.reasonForRejection }}</td>
+      <tr *ngIf="request.reasonForRejection != null">
+        <td class="p-3 mb-2 bg-danger text-white">Rejection Reason:</td>
+        <span>
+          <td class="p-3 mb-2 bg-danger text-white">
+            {{ request.reasonForRejection }}
+          </td>
+        </span>
       </tr>
     </table>
   </main>
@@ -79,7 +83,7 @@
       >
       &nbsp;
     </span>
-    <span
+    <span *ngIf="loggedUser.id == request.user.id"
       ><button (click)="delete()" class="btn btn-sm btn-danger">
         Delete
       </button></span

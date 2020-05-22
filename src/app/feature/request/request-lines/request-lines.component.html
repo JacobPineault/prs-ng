@@ -17,7 +17,26 @@
       <tbody>
         <tr>
           <td>{{ request.description }}</td>
-          <td>{{ request.status }}</td>
+          <td *ngIf="request.status == 'New'">
+            <span class="badge badge-pill badge-warning">{{
+              request.status
+            }}</span>
+          </td>
+          <td *ngIf="request.status == 'Review'">
+            <span class="badge badge-pill badge-primary">{{
+              request.status
+            }}</span>
+          </td>
+          <td *ngIf="request.status == 'Approved'">
+            <span class="badge badge-pill badge-success">{{
+              request.status
+            }}</span>
+          </td>
+          <td *ngIf="request.status == 'Rejected'">
+            <span class="badge badge-pill badge-danger">{{
+              request.status
+            }}</span>
+          </td>
           <td>${{ request.total }}</td>
         </tr>
       </tbody>
@@ -62,7 +81,7 @@
                 height="20"
                 title="Edit"
             /></a>
-            |
+            &nbsp;
             <a style="cursor: pointer;" (click)="remove(lineItem.id)">
               <img
                 src="assets/delete.jpg"
@@ -81,7 +100,9 @@
       No items added to request yet.
     </span>
   </span>
-  <button (click)="submit()" class="btn btn-sm btn-primary">
-    Submit Request
-  </button>
+  <span *ngIf="lineItems.length > 0">
+    <button (click)="submit()" class="btn btn-sm btn-primary">
+      Submit Request
+    </button>
+  </span>
 </div>

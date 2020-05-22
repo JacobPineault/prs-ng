@@ -9,14 +9,17 @@
       title="Add New Request"
   /></a>
 </section>
-<table *ngIf="requests" class="table table-sm table-hover table-striped">
+<table
+  *ngIf="requests && loggedUser"
+  class="table table-sm table-hover table-striped"
+>
   <thead>
     <tr>
       <th>User</th>
       <th>Submitted Date</th>
       <th>Date Needed</th>
-      <th>Status</th>
       <th>Total</th>
+      <th>Status</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -25,8 +28,19 @@
       <td>{{ request.user.firstName }}&nbsp;{{ request.user.lastName }}</td>
       <td>{{ request.submittedDate }}</td>
       <td>{{ request.dateNeeded }}</td>
-      <td>{{ request.status }}</td>
       <td>${{ request.total }}</td>
+      <td *ngIf="request.status == 'New'">
+        <span class="badge badge-pill badge-warning">{{ request.status }}</span>
+      </td>
+      <td *ngIf="request.status == 'Review'">
+        <span class="badge badge-pill badge-primary">{{ request.status }}</span>
+      </td>
+      <td *ngIf="request.status == 'Approved'">
+        <span class="badge badge-pill badge-success">{{ request.status }}</span>
+      </td>
+      <td *ngIf="request.status == 'Rejected'">
+        <span class="badge badge-pill badge-danger">{{ request.status }}</span>
+      </td>
       <td>
         <span>
           <a routerLink="/request/detail/{{ request.id }}">
@@ -37,6 +51,7 @@
               title="Request Details"
           /></a>
         </span>
+        &nbsp;
         <span
           *ngIf="loggedUser.id == request.user.id || loggedUser.admin == true"
         >
@@ -48,6 +63,7 @@
               title="Edit Request"
           /></a>
         </span>
+        &nbsp;
         <span *ngIf="loggedUser.id == request.user.id">
           <a routerLink="/request/lines/{{ request.id }}">
             <img
@@ -60,34 +76,4 @@
       </td>
     </tr>
   </tbody>
-  <!-- <tbody *ngIf="myRequests && user && user.admin == false">
-    <tr *ngFor="let myRequest of myRequests">
-      <td *ngIf="myRequest.status != 'New'">{{ myRequest.submittedDate }}</td>
-      <td *ngIf="myRequest.status == 'New'"></td>
-      <td>{{ myRequest.user.firstName }} {{ myRequest.user.lastName }}</td>
-      <td>{{ myRequest.deliveryMode }}</td>
-      <td>{{ myRequest.dateNeeded }}</td>
-      <td>${{ myRequest.total }}</td>
-      <td>{{ myRequest.status }}</td>
-      <td>
-        <a routerLink="/request/detail/{{ myRequest.id }}"
-          ><img src="assets/details.png" width="20" height="20" title="Detail"
-        /></a>
-        &nbsp;
-        <span *ngIf="myRequest.status == 'New'">
-          <a routerLink="/request/edit/{{ myRequest.id }}"
-            ><img
-              src="assets/pencil-icon.png"
-              width="20"
-              height="20"
-              title="Edit"
-          /></a>
-          &nbsp;
-        </span>
-        <a routerLink="line-item/list/{{ myRequest.id }}"
-          ><img src="assets/lines.png" width="20" height="20"
-        /></a>
-      </td>
-    </tr>
-  </tbody> -->
 </table>
