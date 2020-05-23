@@ -15,12 +15,14 @@
           required
         >
           <option *ngFor="let user of users" [ngValue]="user"
-            >{{ user.firstName }}&nbsp;{{ user.lastName }}</option
+            >{{ request.user.firstName }}&nbsp;{{
+              request.user.lastName
+            }}</option
           >
         </select>
       </td>
       <td *ngIf="!loggedUser.admin">
-        {{ user.firstName }}&nbsp;{{ user.lastName }}
+        {{ request.user.firstName }}&nbsp;{{ request.user.lastName }}
       </td>
     </tr>
     <tr>
@@ -108,7 +110,7 @@
   </main>
   <span
     *ngIf="
-      request.status != rejected &&
+      request.status != 'rejected' &&
       request.description &&
       request.justification &&
       request.dateNeeded &&

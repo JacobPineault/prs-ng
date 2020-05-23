@@ -10,6 +10,7 @@
       <thead>
         <tr>
           <th>Description</th>
+          <th>Justification</th>
           <th>Status</th>
           <th>Total</th>
         </tr>
@@ -17,6 +18,7 @@
       <tbody>
         <tr>
           <td>{{ request.description }}</td>
+          <td>{{ request.justification }}</td>
           <td *ngIf="request.status == 'New'">
             <span class="badge badge-pill badge-warning">{{
               request.status
@@ -102,7 +104,12 @@
       No items added to request yet.
     </span>
   </span>
-  <span *ngIf="lineItems.length > 0 && request.status == 'New'">
+  <span
+    *ngIf="
+      lineItems.length > 0 &&
+      (request.status == 'New' || request.status == 'Review')
+    "
+  >
     <button (click)="submit()" class="btn btn-sm btn-primary">
       Submit Request
     </button>
