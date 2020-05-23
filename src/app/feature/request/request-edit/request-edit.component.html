@@ -5,108 +5,136 @@
     <span> | <a routerLink="/request/list">Return to list</a></span>
   </section>
   <main class="single">
-    <tr>
-      <td>User:</td>
-      <td *ngIf="loggedUser.admin == true">
-        <select
-          [(ngModel)]="request.user"
-          class="rounded"
-          [compareWith]="compUser"
-          required
-        >
-          <option *ngFor="let user of users" [ngValue]="user"
-            >{{ request.user.firstName }}&nbsp;{{
-              request.user.lastName
-            }}</option
+    <span>Request Status:&nbsp;&nbsp;&nbsp;</span>
+    <span *ngIf="request.status == 'New'">
+      <span class="badge badge-pill badge-warning">{{ request.status }}</span>
+    </span>
+    <span *ngIf="request.status == 'Review'">
+      <span class="badge badge-pill badge-primary">{{ request.status }}</span>
+    </span>
+    <span *ngIf="request.status == 'Approved'">
+      <span class="badge badge-pill badge-success">{{ request.status }}</span>
+    </span>
+    <span *ngIf="request.status == 'Rejected'">
+      <span class="badge badge-pill badge-danger">{{ request.status }}</span>
+    </span>
+    <table>
+      <tr>
+        <td>User</td>
+        <td *ngIf="loggedUser.admin == true && request.status != 'Rejected'">
+          <select
+            [(ngModel)]="request.user"
+            class="rounded"
+            [compareWith]="compUser"
+            required
           >
-        </select>
-      </td>
-      <td *ngIf="!loggedUser.admin">
-        {{ request.user.firstName }}&nbsp;{{ request.user.lastName }}
-      </td>
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td *ngIf="loggedUser.id == request.user.id">
-        <input
-          [(ngModel)]="request.description"
-          class="rounded"
-          type="text"
-          style="background-color: azure;"
-          required
-        />&nbsp;
-        <span *ngIf="!request.description"
-          ><img src="assets/required.png" width="25"
-        /></span>
-        <span *ngIf="request.description"
-          ><img src="assets/check.png" width="25"
-        /></span>
-      </td>
-
-      <td *ngIf="loggedUser.id != request.user.id">
-        {{ request.description }}
-      </td>
-    </tr>
-    <tr>
-      <td>Justification:</td>
-      <td *ngIf="loggedUser.id == request.user.id">
-        <input
-          [(ngModel)]="request.justification"
-          class="rounded"
-          type="text"
-          style="background-color: azure;"
-          required
-        />&nbsp;
-        <span *ngIf="!request.justification"
-          ><img src="assets/required.png" width="25"
-        /></span>
-        <span *ngIf="request.justification"
-          ><img src="assets/check.png" width="25"
-        /></span>
-      </td>
-
-      <td *ngIf="loggedUser.id != request.user.id">
-        {{ request.justification }}
-      </td>
-    </tr>
-    <tr>
-      <td>Date Needed:</td>
-      <td *ngIf="loggedUser.id == request.user.id">
-        <input
-          [(ngModel)]="request.dateNeeded"
-          class="rounded"
-          type="date"
-          style="background-color: azure;"
-          required
-        /><span *ngIf="!request.dateNeeded"
-          ><img src="assets/required.png" width="25"
-        /></span>
-        <span *ngIf="request.dateNeeded"
-          ><img src="assets/check.png" width="25"
-        /></span>
-      </td>
-
-      <td *ngIf="loggedUser.id != request.user.id">
-        {{ request.dateNeeded }}
-      </td>
-    </tr>
-    <tr>
-      <td>Delivery Method:</td>
-      <span
-        *ngIf="loggedUser.id == request.user.id || loggedUser.reviewer == true"
-      >
-        <select [(ngModel)]="request.deliveryMode" class="rounded" required>
-          <option value="Delivery">Delivery</option>
-          <option value="In Store Pick-up">In Store Pick-up</option>
-        </select>
-        <span *ngIf="!request.deliveryMode"
-          ><img src="assets/required.png" width="25"
-        /></span>
-        <span *ngIf="request.deliveryMode"
-          ><img src="assets/check.png" width="25"
-        /></span>
-      </span>
-    </tr>
+            <option *ngFor="let user of users" [ngValue]="user"
+              >{{ user.firstName }}&nbsp;{{ user.lastName }}</option
+            >
+          </select>
+        </td>
+        <td *ngIf="!loggedUser.admin">
+          {{ request.user.firstName }}&nbsp;{{ request.user.lastName }}
+        </td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td
+          *ngIf="
+            loggedUser.id == request.user.id &&
+            (request.status != 'Rejected' || 'Approved')
+          "
+        >
+          <input
+            [(ngModel)]="request.description"
+            class="rounded"
+            type="text"
+            style="background-color: azure;"
+            required
+          />&nbsp;
+          <span *ngIf="!request.description"
+            ><img src="assets/required.png" width="25"
+          /></span>
+          <span *ngIf="request.description"
+            ><img src="assets/check.png" width="25"
+          /></span>
+        </td>
+        <td *ngIf="loggedUser.id != request.user.id">
+          {{ request.description }}
+        </td>
+      </tr>
+      <tr>
+        <td>Justification</td>
+        <td
+          *ngIf="
+            loggedUser.id == request.user.id &&
+            (request.status != 'Rejected' || 'Approved')
+          "
+        >
+          <input
+            [(ngModel)]="request.justification"
+            class="rounded"
+            type="text"
+            style="background-color: azure;"
+            required
+          />&nbsp;
+          <span *ngIf="!request.justification"
+            ><img src="assets/required.png" width="25"
+          /></span>
+          <span *ngIf="request.justification"
+            ><img src="assets/check.png" width="25"
+          /></span>
+        </td>
+        <td *ngIf="loggedUser.id != request.user.id">
+          {{ request.justification }}
+        </td>
+      </tr>
+      <tr>
+        <td>Date Needed:</td>
+        <td
+          *ngIf="
+            loggedUser.id == request.user.id &&
+            (request.status != 'Rejected' || 'Approved')
+          "
+        >
+          <input
+            [(ngModel)]="request.dateNeeded"
+            class="rounded"
+            type="date"
+            style="background-color: azure;"
+            required
+          /><span *ngIf="!request.dateNeeded"
+            ><img src="assets/required.png" width="25"
+          /></span>
+          <span *ngIf="request.dateNeeded"
+            ><img src="assets/check.png" width="25"
+          /></span>
+        </td>
+        <td *ngIf="loggedUser.id != request.user.id">
+          {{ request.dateNeeded }}
+        </td>
+      </tr>
+      <tr>
+        <td>Delivery Method:</td>
+        <span
+          *ngIf="
+            (loggedUser.id == request.user.id || loggedUser.reviewer == true) &&
+            request.status != ('Rejected' || 'Approved')
+          "
+        >
+          <select [(ngModel)]="request.deliveryMode" class="rounded" required>
+            <option value="Delivery">Delivery</option>
+            <option value="In Store Pick-up">In Store Pick-up</option>
+          </select>
+          <span *ngIf="!request.deliveryMode"
+            ><img src="assets/required.png" width="25"
+          /></span>
+          <span *ngIf="request.deliveryMode"
+            ><img src="assets/check.png" width="25"
+          /></span>
+        </span>
+      </tr>
+    </table>
   </main>
   <span
     *ngIf="

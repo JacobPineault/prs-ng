@@ -33,6 +33,7 @@ export class RequestCreateComponent implements OnInit {
     this.requestSvc.create(this.request).subscribe((jr) => {
       if (!jr.errors) {
         this.requestId = this.request.id;
+        // add rerouting module
         this.router.navigateByUrl('request/lines/' + this.requestId);
         console.log(this.request);
       } else {

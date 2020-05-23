@@ -78,7 +78,7 @@
           <td>${{ lineItem.product.price }}</td>
           <td>${{ lineItem.product.price * lineItem.quantity }}</td>
           <td class="actions" *ngIf="request.status == 'New'">
-            <a routerLink="/request/edit/{{ lineItem.id }}">
+            <a routerLink="/request/edit/{{ this.lineItem.id }}">
               <img
                 src="assets/pencil-icon.png"
                 width="20"

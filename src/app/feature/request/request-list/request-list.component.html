@@ -16,6 +16,7 @@
   <thead>
     <tr>
       <th>User</th>
+      <th>Description</th>
       <th>Submitted Date</th>
       <th>Date Needed</th>
       <th>Total</th>
@@ -26,6 +27,7 @@
   <tbody *ngIf="requests">
     <tr *ngFor="let request of requests">
       <td>{{ request.user.firstName }}&nbsp;{{ request.user.lastName }}</td>
+      <td>{{ request.description }}</td>
       <td>{{ request.submittedDate }}</td>
       <td>{{ request.dateNeeded }}</td>
       <td>${{ request.total }}</td>
